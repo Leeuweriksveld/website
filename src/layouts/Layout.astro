@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Biologisch-dynamische groentekwekerij in Emmen. Groenteabonnementen, boerderijwinkel en webwinkel." } = Astro.props;
+const huidigPad = Astro.url.pathname;
+
+const nav = [
+  { label: "Home", href: "/" },
+  { label: "Nieuws", href: "/nieuws" },
+  { label: "Abonnementen", href: "/abonnementen" },
+  { label: "Zelfoogsten", href: "/zelfoogsten" },
+  { label: "Verse lichtwortel", href: "/verse-lichtwortel" },
+  { label: "Afhaalpunten", href: "/afhaalpunten" },
+  { label: "Recepten", href: "/recepten" },
+  { label: "Openingstijden", href: "/openingstijden" },
+  { label: "Contact", href: "/contact" },
+  { label: "Over ons", href: "/over-ons" },
+];
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} — 't Leeuweriksveld</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="site-logo">
+          <div class="logo-teken">🌱</div>
+          <div class="logo-tekst">
+            <span class="logo-naam">'t Leeuweriksveld</span>
+            <span class="logo-ondertitel">Biologisch-dynamisch</span>
+          </div>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="hoofdnav" id="hoofdnav">
+          <ul>
+            {nav.map(item => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={huidigPad === item.href || (item.href !== "/" && huidigPad.startsWith(item.href)) ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-sectie">
+          <h4>'t Leeuweriksveld</h4>
+          <p>Biologisch-dynamische groentekwekerij in Emmen, Drenthe. Groenteabonnementen, boerderijwinkel en zelfoogsten.</p>
+          <div class="keurmerk-rij">
+            <span class="keurmerk">🌿 Demeter</span>
+            <span class="keurmerk">🇪🇺 EU Biologisch</span>
+          </div>
+        </div>
+
+        <div class="footer-sectie">
+          <h4>Navigatie</h4>
+          <ul>
+            {nav.slice(0, 5).map(item => (
+              <li><a href={item.href}>{item.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-sectie">
+          <h4>Contact</h4>
+          <p>Wouter en Kathinka Kamphuis<br />
+          Zandzoom 72<br />
+          7814 VJ Emmen</p>
+          <p style="margin-top: 0.75rem;">
+            <a href="tel:0591381445">0591-381445</a><br />
+            <a href="mailto:info@leeuweriksveld.nl">info@leeuweriksveld.nl</a>
+          </p>
+        </div>
+
+        <div class="footer-sectie">
+          <h4>Winkel open</h4>
+          <ul>
+            <li>Maandag: 15:00–18:00</li>
+            <li>Donderdag: 14:00–18:00</li>
+            <li>Vrijdag: 9:00–17:00</li>
+            <li>Zaterdag: 9:00–14:00</li>
+          </ul>
+          <p style="margin-top: 0.75rem; font-size: 0.8rem;">Skal-nr. 025779 · KvK 04085776</p>
+        </div>
+      </div>
+
+      <div class="footer-bodem">
+        <p>© {new Date().getFullYear()} 't Leeuweriksveld · Zandzoom 72, Emmen · Biologisch-dynamisch gecertificeerd</p>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const nav = document.getElementById('hoofdnav');
+      hamburger?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

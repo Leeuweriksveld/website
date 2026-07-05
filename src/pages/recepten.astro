@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Recepten" description="Recepten voor groenten van 't Leeuweriksveld — van A tot Z, met tips voor bereiding en bewaring.">
+  <div class="pagina-hero">
+    <h1>Recepten</h1>
+    <p>Seizoensrecepten en bereidingstips — van aardappel tot zucchini</p>
+  </div>
+
+  <div class="broodkruimel">
+    <div class="container">
+      <a href="/">Home</a> › Recepten
+    </div>
+  </div>
+
+  <section class="sectie">
+    <div class="container">
+
+      <div class="info-banner">
+        <p>🍽️ Onze recepten zijn gebaseerd op de pakketbrieven die we wekelijks meesturen met het groenteabonnement. Veel recepten zijn ook online te vinden via de <a href="/nieuws">pakketbrieven</a>.</p>
+      </div>
+
+      <p style="margin-bottom: 2rem; color: var(--tekst-zacht);">Hieronder vind je een overzicht van groenten die wij telen, met bereidingstips en receptideeën. Klik op een groente voor meer informatie.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem;">
+        {[
+          { naam: "Aardappelen", icoon: "🥔", tips: "Koken, bakken, stampen, roosteren" },
+          { naam: "Aardpeer", icoon: "🫚", tips: "Soep, geroosterd, rauw geraspt" },
+          { naam: "Andijvie", icoon: "🥬", tips: "Stamppot, salade, gesmoord" },
+          { naam: "Asperges", icoon: "🫛", tips: "Gekookt, geroosterd, met ham" },
+          { naam: "Augurk", icoon: "🥒", tips: "Rauw, ingelegde augurken" },
+          { naam: "Bieten", icoon: "🟣", tips: "Salade, soep, geroosterd" },
+          { naam: "Bleekselderij", icoon: "🌿", tips: "Soep, ragout, rauw" },
+          { naam: "Boerenkool", icoon: "🥦", tips: "Stamppot, chips, salade" },
+          { naam: "Bonen (sperzie)", icoon: "🫘", tips: "Gekookt, roerbak, salade" },
+          { naam: "Broccoli", icoon: "🥦", tips: "Gestoomd, ovenschotel, soep" },
+          { naam: "Chinese kool", icoon: "🥬", tips: "Roerbak, salade, soep" },
+          { naam: "Courgette", icoon: "🫑", tips: "Geroosterd, gevuld, rauw" },
+          { naam: "Erwten", icoon: "🫘", tips: "Erwtensoep, ragout, gepureerd" },
+          { naam: "Knolselderij", icoon: "⚪", tips: "Stamppot, soep, geroosterd" },
+          { naam: "Koolrabi", icoon: "🟢", tips: "Rauw geraspt, gestoofd, soep" },
+          { naam: "Lichtwortel", icoon: "🌱", tips: "Gestoofd, gebakken, soep" },
+          { naam: "Mais", icoon: "🌽", tips: "Gekookt, gegrild, salade" },
+          { naam: "Pastinaak", icoon: "🫚", tips: "Soep, puree, geroosterd" },
+          { naam: "Peterselie", icoon: "🌿", tips: "Garnering, salsa verde, soep" },
+          { naam: "Pompoen", icoon: "🎃", tips: "Soep, geroosterd, curry" },
+          { naam: "Prei", icoon: "🥬", tips: "Soep, quiche, gestoofd" },
+          { naam: "Rode kool", icoon: "🟣", tips: "Zuurkool, salade, gestoofd" },
+          { naam: "Savooie kool", icoon: "🥬", tips: "Gestoofd, gevuld, soep" },
+          { naam: "Snijbiet", icoon: "🌈", tips: "Gestoofd, salade, pasta" },
+          { naam: "Spinazie", icoon: "🥬", tips: "Soep, salade, ovenschotel" },
+          { naam: "Spitskool", icoon: "🥬", tips: "Salade, roerbak, soep" },
+          { naam: "Spruitjes", icoon: "🟢", tips: "Gekookt, geroosterd, wok" },
+          { naam: "Tomaten", icoon: "🍅", tips: "Salade, saus, soep, gedroogd" },
+          { naam: "Ui", icoon: "🧅", tips: "Basis voor vrijwel alles" },
+          { naam: "Venkel", icoon: "🌿", tips: "Salade, geroosterd, soep" },
+          { naam: "Witlof", icoon: "⚪", tips: "Gegratineerd, salade, gestoofd" },
+          { naam: "Wortelen", icoon: "🥕", tips: "Soep, rauw, geroosterd" },
+        ].map(item => (
+          <div class="kaart" style="padding: 1rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">{item.icoon}</div>
+            <h3 style="font-size: 0.95rem; margin-bottom: 0.3rem;">{item.naam}</h3>
+            <p style="font-size: 0.78rem; color: var(--tekst-zacht); margin: 0;">{item.tips}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="inhoud-blok" style="margin-top: 2.5rem;">
+        <h2>Pakketbrieven met recepten</h2>
+        <p>Bij elk groenteabonnement ontvang je een pakketbrief met informatie over de groenten van die week, tips voor bewaring en concrete recepten. Abonnees ontvangen deze wekelijks. Archief pakketbrieven: neem contact op voor oudere edities.</p>
+      </div>
+
+    </div>
+  </section>
+</Layout>
