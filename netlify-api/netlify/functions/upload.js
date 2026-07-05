@@ -1,10 +1,86 @@
-const Anthropic = require('@anthropic-ai/sdk');
 const pdfParse = require('pdf-parse');
 const multipart = require('parse-multipart-data');
 
+function extraheerData(tekst) {
+  const regels = tekst.split(/\r?\n/).map(r => r.trim()).filter(r => r.length > 0);
+
+  const groenten = [];
+  const recepten = [];
+  const nieuws = [];
+
+  // Zoek secties op basis van koppen
+  let sectie = null;
+
+  // Patronen voor recepttitels: genummerd (1. 2. 1) 2)) of met streepje
+  const receptPatroon = /^(\d+[\.\)]\s+|[-•*]\s+)(.+)$/;
+
+  // Groenten: vaak in een blok na "pakket" of "inhoud" of "groenten"
+  const groentenKop = /pakket|inhoud|groenten in|wat zit er|deze week|volgende week/i;
+  const receptenKop = /recept|bereid|tip|in de keuken/i;
+  const nieuwsKop = /nieuws|agenda|evenement|aankondig|activiteit|bijeenkomst|concert|open dag|oproep/i;
+  const stopWoorden = /volgende week|^pagina|^leeuweriksveld|^www\.|^info@|^tel|^\d{4}\s?[a-z]{2}/i;
+
+  for (let i = 0; i < regels.length; i++) {
+    const regel = regels[i];
+
+    // Sectie detecteren
+    if (groentenKop.test(regel) && regel.length < 60) { sectie = 'groenten'; continue; }
+    if (receptenKop.test(regel) && regel.length < 60) { sectie = 'recepten'; continue; }
+    if (nieuwsKop.test(regel) && regel.length < 60) { sectie = 'nieuws'; continue; }
+
+    if (stopWoorden.test(regel)) continue;
+
+    if (sectie === 'groenten') {
+      // Groenten staan vaak als simpele regels of met streepje
+      const match = regel.match(/^[-•*]?\s*(.+)$/);
+      if (match && match[1].length > 2 && match[1].length < 60) {
+        const groente = match[1].replace(/\(.*?\)/g, '').trim();
+        if (groente && !groenten.includes(groente)) groenten.push(groente);
+      }
+    }
+
+    if (sectie === 'recepten') {
+      const match = regel.match(receptPatroon);
+      if (match && match[2].length > 4) {
+        recepten.push(match[2].trim());
+      } else if (regel.length > 10 && regel.length < 100 && /[a-z]/.test(regel)) {
+        // Recepttitel zonder nummering maar in receptsectie
+        if (!/^\d+$/.test(regel)) recepten.push(regel);
+      }
+    }
+
+    if (sectie === 'nieuws' && regel.length > 15 && regel.length < 200) {
+      nieuws.push(regel);
+    }
+  }
+
+  // Fallback: als groenten leeg zijn, zoek lijstitems bovenaan
+  if (groenten.length === 0) {
+    for (const regel of regels.slice(0, 30)) {
+      if (/^[-•]\s+\w/.test(regel)) {
+        groenten.push(regel.replace(/^[-•]\s+/, '').replace(/\(.*?\)/g, '').trim());
+      }
+    }
+  }
+
+  // Fallback: recepten op basis van nummering in hele tekst
+  if (recepten.length === 0) {
+    for (const regel of regels) {
+      const match = regel.match(/^\d+[\.\)]\s+(.{5,80})$/);
+      if (match) recepten.push(match[1].trim());
+    }
+  }
+
+  return {
+    groenten: groenten.slice(0, 20),
+    recepten: recepten.slice(0, 20),
+    nieuws: nieuws.slice(0, 10),
+  };
+}
+
 exports.handler = async function(event) {
   const headers = {
-    'Access-Control-Allow-Origin': 'https://leeuweriksveld.github.io',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Content-Type': 'application/json',
@@ -14,7 +90,6 @@ exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ bericht: 'Alleen POST toegestaan' }) };
 
   try {
-    // Multipart verwerken
     const boundary = multipart.getBoundary(event.headers['content-type']);
     const body = Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8');
     const parts = multipart.parse(body, boundary);
@@ -25,7 +100,6 @@ exports.handler = async function(event) {
     const jaar = parseInt(get('jaar')?.data?.toString());
     const bestandPart = get('bestand');
 
-    // Wachtwoord controleren
     if (wachtwoord !== process.env.UPLOAD_WACHTWOORD) {
       return { statusCode: 401, headers, body: JSON.stringify({ bericht: 'Ongeldig wachtwoord' }) };
     }
@@ -34,59 +108,28 @@ exports.handler = async function(event) {
       return { statusCode: 400, headers, body: JSON.stringify({ bericht: 'Bestand, week en jaar zijn verplicht' }) };
     }
 
-    // Tekst extraheren uit PDF of HTML
+    // Tekst extraheren
     let tekst = '';
     const bestandsnaam = bestandPart.filename || '';
     if (bestandsnaam.endsWith('.pdf')) {
       const result = await pdfParse(bestandPart.data);
       tekst = result.text;
     } else {
-      // HTML: tags verwijderen
-      tekst = bestandPart.data.toString('utf8').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+      tekst = bestandPart.data.toString('utf8').replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, '\n');
     }
 
-    // Claude API: gestructureerde data extraheren
-    const claude = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const response = await claude.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 1024,
-      messages: [{
-        role: 'user',
-        content: `Dit is de tekst van een wekelijkse pakketbrief van biologische boerderij 't Leeuweriksveld.
-Extraheer de volgende informatie en geef ALLEEN een JSON-object terug, zonder uitleg:
+    const extracted = extraheerData(tekst);
 
-{
-  "groenten": ["lijst van groenten in het pakket deze week"],
-  "recepten": ["lijst van recepttitels"],
-  "nieuws": ["lijst van korte nieuwsberichten of aankondigingen, maximaal 1 zin per item"]
-}
-
-Tekst van de pakketbrief:
-${tekst.slice(0, 6000)}`
-      }]
-    });
-
-    let extracted;
-    try {
-      const jsonMatch = response.content[0].text.match(/\{[\s\S]*\}/);
-      extracted = JSON.parse(jsonMatch[0]);
-    } catch {
-      return { statusCode: 500, headers, body: JSON.stringify({ bericht: 'AI kon de brief niet verwerken. Probeer opnieuw.' }) };
-    }
-
-    // Bestandsnaam bepalen
     const weekStr = String(week).padStart(2, '0');
     const ext = bestandsnaam.endsWith('.html') ? '.html' : '.pdf';
     const nieuwBestand = `pakketbrief-week-${weekStr}-${jaar}${ext}`;
 
-    // Nieuw record
     const nieuwRecord = {
-      week,
-      jaar,
+      week, jaar,
       bestand: nieuwBestand,
-      groenten: extracted.groenten || [],
-      recepten: extracted.recepten || [],
-      nieuws: extracted.nieuws || [],
+      groenten: extracted.groenten,
+      recepten: extracted.recepten,
+      nieuws: extracted.nieuws,
     };
 
     // Haal huidige pakketbrieven.json op via GitHub API
@@ -102,17 +145,14 @@ ${tekst.slice(0, 6000)}`
     const huidigeSha = huidigData.sha;
     const huidigeInhoud = JSON.parse(Buffer.from(huidigData.content, 'base64').toString());
 
-    // Bestaand record vervangen of nieuw toevoegen
     const index = huidigeInhoud.findIndex(r => r.week === week && r.jaar === jaar);
     if (index >= 0) {
       huidigeInhoud[index] = nieuwRecord;
     } else {
-      // Invoegen op juiste positie (nieuwste eerst)
       const pos = huidigeInhoud.findIndex(r => r.jaar < jaar || (r.jaar === jaar && r.week < week));
       huidigeInhoud.splice(pos >= 0 ? pos : 0, 0, nieuwRecord);
     }
 
-    // Commit naar GitHub
     const nieuweInhoud = Buffer.from(JSON.stringify(huidigeInhoud, null, 2)).toString('base64');
     const commitResp = await fetch(apiBase, {
       method: 'PUT',
@@ -137,8 +177,7 @@ ${tekst.slice(0, 6000)}`
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        week,
-        jaar,
+        week, jaar,
         aantalGroenten: nieuwRecord.groenten.length,
         aantalRecepten: nieuwRecord.recepten.length,
       })
