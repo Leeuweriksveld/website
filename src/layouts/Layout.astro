@@ -8,19 +8,19 @@ interface Props {
 
 const { title, description = "Biologisch-dynamische groentekwekerij in Emmen. Groenteabonnementen, boerderijwinkel en webwinkel." } = Astro.props;
 const huidigPad = Astro.url.pathname;
+const b = import.meta.env.BASE_URL.replace(/\/$/, ''); // "/website" of ""
 
 const nav = [
-  { label: "Home", href: "/" },
-  { label: "Nieuws", href: "/nieuws" },
-  { label: "Abonnementen", href: "/abonnementen" },
-  { label: "Zelfoogsten", href: "/zelfoogsten" },
-  { label: "Verse lichtwortel", href: "/verse-lichtwortel" },
-  { label: "Afhaalpunten", href: "/afhaalpunten" },
-  { label: "Recepten", href: "/recepten" },
-  { label: "Openingstijden", href: "/openingstijden" },
-  { label: "Contact", href: "/contact" },
-  { label: "Foto's", href: "/fotos" },
-  { label: "Over ons", href: "/over-ons" },
+  { label: "Home", href: `${b}/` },
+  { label: "Nieuws", href: `${b}/nieuws/` },
+  { label: "Abonnementen", href: `${b}/abonnementen/` },
+  { label: "Zelfoogsten", href: `${b}/zelfoogsten/` },
+  { label: "Afhaalpunten", href: `${b}/afhaalpunten/` },
+  { label: "Recepten", href: `${b}/recepten/` },
+  { label: "Openingstijden", href: `${b}/openingstijden/` },
+  { label: "Contact", href: `${b}/contact/` },
+  { label: "Foto's", href: `${b}/fotos/` },
+  { label: "Over ons", href: `${b}/over-ons/` },
 ];
 ---
 
@@ -31,13 +31,13 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} — 't Leeuweriksveld</title>
-    <link rel="icon" type="image/png" href="/afb/logo-leeuweriksveld.png" />
+    <link rel="icon" type="image/png" href={`${b}/afb/logo-leeuweriksveld.png`} />
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a href="/" class="site-logo">
-          <img src="/afb/logo-leeuweriksveld.png" alt="'t Leeuweriksveld logo" class="logo-afbeelding" />
+        <a href={`${b}/`} class="site-logo">
+          <img src={`${b}/afb/logo-leeuweriksveld.png`} alt="'t Leeuweriksveld logo" class="logo-afbeelding" />
           <div class="logo-tekst">
             <span class="logo-naam">'t Leeuweriksveld</span>
             <span class="logo-ondertitel">Biologisch-dynamisch</span>
@@ -56,7 +56,7 @@ const nav = [
               <li>
                 <a
                   href={item.href}
-                  aria-current={huidigPad === item.href || (item.href !== "/" && huidigPad.startsWith(item.href)) ? "page" : undefined}
+                  aria-current={huidigPad === item.href || huidigPad.startsWith(item.href.replace(/\/$/, '')) ? "page" : undefined}
                 >
                   {item.label}
                 </a>
@@ -74,7 +74,7 @@ const nav = [
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-sectie">
-          <img src="/afb/logo-leeuweriksveld.png" alt="'t Leeuweriksveld" class="footer-logo" />
+          <img src={`${b}/afb/logo-leeuweriksveld.png`} alt="'t Leeuweriksveld" class="footer-logo" />
           <p>Biologisch-dynamische groentekwekerij in Emmen, Drenthe. Groenteabonnementen, boerderijwinkel en zelfoogsten.</p>
           <div class="keurmerk-rij">
             <span class="keurmerk">Demeter gecertificeerd</span>

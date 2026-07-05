@@ -1,0 +1,256 @@
+[
+  {
+    "week": 2, "jaar": 2024, "bestand": "pakketbrief-week-02-2024.html",
+    "groenten": ["Boerenkool", "Yacon", "Winterpostelein", "Winterpeen", "Paksoi"],
+    "recepten": [
+      "Boerenkoolrolletjes met feta en olijven",
+      "Salade van winterpostelein met sinaasappel en yacon",
+      "Tomaten, selderij en yacon salade",
+      "Wortelen met appels op Duitse wijze",
+      "Gebakken paksoi",
+      "Geroosterde yacon soep"
+    ],
+    "nieuws": ["Seminar arbeidsdeling 26-28 januari", "Concert cello en piano 31 januari", "Aardedans jubileumvoorstelling 15 juni"]
+  },
+  {
+    "week": 3, "jaar": 2024, "bestand": "pakketbrief-week-03-2024.html",
+    "groenten": ["Boerenkool", "Rode biet", "Bindsla", "Zoete bataat", "Bleekselderij"],
+    "recepten": [
+      "Variatie op Borsjt: rode bietensoep",
+      "Stamppot boerenkool, maar dan anders",
+      "Boerenkooltaart met zoete bataat",
+      "Griekse bindsla",
+      "Geroosterde bindsla met citroen",
+      "Gestoofde linzen met bleekselderij"
+    ],
+    "nieuws": ["Schaatspret op natuurijs", "Dinner en concert Muzikale Verhalen 31 januari", "Aardedans jubileumvoorstelling 15 juni"]
+  },
+  {
+    "week": 4, "jaar": 2024, "bestand": "pakketbrief-week-04-2024.html",
+    "groenten": ["Prei", "Rode kool", "Komkommer", "Knolselderij", "Waspeen"],
+    "recepten": [
+      "Linzenpaté met prei",
+      "Knolselderij gratin",
+      "Wortel met agavesiroop, komijn en koriander",
+      "Rode kool als versiering",
+      "Rode kool met gebakken appeltjes"
+    ],
+    "nieuws": ["Open Dag Warmonderhof 27 januari", "Eten wat de pot schaft 31 januari", "Aardedans jubileumvoorstelling 15 juni"]
+  },
+  {
+    "week": 5, "jaar": 2024, "bestand": "pakketbrief-week-05-2024.html",
+    "groenten": ["Winterpostelein", "Spruitjes", "Boerenkool", "Pastinaak", "Venkel"],
+    "recepten": [
+      "Pastinaak met mosterdsaus",
+      "Spruiten met kaassaus",
+      "Winterpostelein met zongedroogde tomaatjes",
+      "Boerenkool met pompoen",
+      "Stamppot boerenkool met knolselderij",
+      "Gemarineerde tofoe voor bij de boerenkool",
+      "Venkel uit de oven"
+    ],
+    "nieuws": ["Koor de Leeuwericken treedt op 4 februari", "Eten wat de pot schaft 28 februari", "BD-dineren 11 mei en 19 oktober"]
+  },
+  {
+    "week": 6, "jaar": 2024, "bestand": "pakketbrief-week-06-2024.html",
+    "groenten": ["Winterpostelein", "Palmkool", "Winterpeen", "Trostomaten", "Zuurkool"],
+    "recepten": [
+      "Stamppot zuurkool",
+      "Salade van winterpostelein met kaaskrokantjes",
+      "Palmkool- of boerenkoolsoep",
+      "Gebakken winterpeen",
+      "Zelfgemaakte pastasaus",
+      "Zuurkoolschotel met tomaten"
+    ],
+    "nieuws": ["BD-dinners 11 mei en 19 oktober", "Aardedans 15 juni ter viering 20 jaar bedrijf"]
+  },
+  {
+    "week": 7, "jaar": 2024, "bestand": "pakketbrief-week-07-2024.html",
+    "groenten": ["Veldsla", "Boerenkool", "Prei", "Schorseneren", "Courgette"],
+    "recepten": [
+      "Gebakken schorseneren",
+      "Prei met kaas uit de oven",
+      "Kippensoep met boerenkool",
+      "Prei met kokosmelk en boerenkool",
+      "Veldsla met kerriedressing",
+      "Courgette uit de oven met couscous en feta"
+    ],
+    "nieuws": ["Female Voices Emmen zoekt sopraan", "Kefir en Kombucha beschikbaar om gratis uit te proberen"]
+  },
+  {
+    "week": 8, "jaar": 2024, "bestand": "pakketbrief-week-08-2024.html",
+    "groenten": ["Winterpostelein", "Bloemkool", "Waspeen", "Zoete bataat", "Komkommer"],
+    "recepten": [
+      "Bloemkool met bechamelsaus",
+      "Gebakken aardappeltjes",
+      "Geraspte komkommer in zoetzuur",
+      "Salade van winterpostelein",
+      "Curry van zoete aardappel",
+      "Wortelfrietjes met kip en mandarijn uit de oven",
+      "Geroerbakte komkommer"
+    ],
+    "nieuws": ["Aardedans 15 juni, workshop 13:00 uur voorafgaand", "Preparatendag 1 april", "Wildplukwandeling 23 februari"]
+  },
+  {
+    "week": 9, "jaar": 2024, "bestand": "pakketbrief-week-09-2024.html",
+    "groenten": ["Winterpostelein", "Prei", "Witte kool", "Knolselderij", "Rode puntpaprika"],
+    "recepten": [
+      "Knolselderijsoep met sinaasappelschil",
+      "Witte koolsalade",
+      "Preirisotto met shi-i-takes",
+      "Paprika met saus uit de oven"
+    ],
+    "nieuws": ["Aardedans optreden 15 juni", "Preparatendag 1 april", "Eten wat de pot schaft maandelijks op 28e", "Jack Russell-Boerenfox puppy's te koop"]
+  },
+  {
+    "week": 10, "jaar": 2024, "bestand": "pakketbrief-week-10-2024.html",
+    "groenten": ["Winterpostelein", "Krieltjes", "Bieslook", "Rode bietjes", "Tomaten", "Spitskool"],
+    "recepten": [
+      "Wildpluksalade met winterpostelein",
+      "Bietenstamp",
+      "Burgers van rode biet",
+      "Gebakken krieltjes in oven of koekenpan",
+      "Gevulde courgettes met tomaat",
+      "Geroerbakte spitskool"
+    ],
+    "nieuws": ["Zelfoogstabonnement start 1 mei", "BD-dineren mei en oktober", "Aardedans optreden juni"]
+  },
+  {
+    "week": 11, "jaar": 2024, "bestand": "pakketbrief-week-11-2024.html",
+    "groenten": ["Winterpostelein", "Prei", "Waspeen", "Rode kool", "Courgette"],
+    "recepten": [
+      "Wortel-kokoscurry met venkelzaadjes",
+      "Salade van winterpostelein met handsinaasappels",
+      "Heldere groentesoep met salie en lavas",
+      "Courgetteslierten met Parmezaanse kaas",
+      "Salade van rode kool, wortel, mandarijn en abrikozen"
+    ],
+    "nieuws": ["Zelfoogstabonnement start 1 mei", "Aardedans 15 juni", "Eemstuin zoekt investeerder €25.000"]
+  },
+  {
+    "week": 12, "jaar": 2024, "bestand": "pakketbrief-week-12-2024.html",
+    "groenten": ["Veldsla", "Pastinaak", "Paksoi", "Komkommer", "Aubergine"],
+    "recepten": [
+      "Pastinaak of wortel uit de oven",
+      "Gekarameliseerde pastinaak in linzensalade",
+      "Paksoy met sausje",
+      "Raita salade met komkommer",
+      "Gepofte aubergine met tapenade en vegan parmezaan",
+      "Baba ganoush salade met aubergine"
+    ],
+    "nieuws": ["Zelfoogstabonnement nieuw vanaf mei", "BD-dineren 11 mei en 19 oktober", "Aardedans 15 juni", "Kunstzinnig festival 14 september"]
+  },
+  {
+    "week": 13, "jaar": 2024, "bestand": "pakketbrief-week-13-2024.html",
+    "groenten": ["Winterpostelein", "Prei", "Zoete bataat", "Venkel", "Bleekselderij"],
+    "recepten": [
+      "Geroerbakte prei met blokjes zoete bataat",
+      "Geroosterde venkel of bleekselderij met sinaasappel",
+      "Waldorfsalade met bleekselderij of knolvenkel",
+      "Groentesoep van restjes",
+      "Citroenvla",
+      "Kokosmakronen"
+    ],
+    "nieuws": ["Preparatendag 1 april", "Zelfoogst abonnement start 1 mei", "BD-dineren 11 mei en 19 oktober", "Festival op de brink 14 september"]
+  },
+  {
+    "week": 14, "jaar": 2024, "bestand": "pakketbrief-week-14-2024.html",
+    "groenten": ["Lentepostelein", "Raapstelen", "Rode biet", "Witte kool", "Rode puntpaprika"],
+    "recepten": [
+      "Raapstelenquiche met paprika",
+      "Lentepostelein met geraspte rode biet",
+      "Salade met couscous en witte kool",
+      "Snelle zure witte kool",
+      "Geroerbakte tofu met witte kool en paprika",
+      "Veganistische pesto met lentepostelein, zevenblad en daslook"
+    ],
+    "nieuws": ["Kiezelpreparaat 2024 roering elke derde vrijdag", "Zelfoogsten vanaf 1 mei", "Aardedans juni", "Festival september"]
+  },
+  {
+    "week": 15, "jaar": 2024, "bestand": "pakketbrief-week-15-2024.html",
+    "groenten": ["Rucola", "Raapstelen", "Rabarber", "Waspeen", "Courgette"],
+    "recepten": [
+      "Romige raapsteel",
+      "Geroerbakte waspeen met komijn",
+      "Snelle ratatouille met courgette",
+      "Lentezuurkool met tapenade of zelfgemaakte pesto",
+      "Rucolasalade",
+      "Crepes",
+      "Salade met zuurkool, appel en seitan"
+    ],
+    "nieuws": ["Eerste asperges geoogst", "Pinkstermarkt 18 mei", "BD-dineren 11 mei en 19 oktober", "Aardedans 15 juni"]
+  },
+  {
+    "week": 16, "jaar": 2024, "bestand": "pakketbrief-week-16-2024.html",
+    "groenten": ["Raapstelen", "Prei", "Rabarber", "Rode kool", "Bleekselderij"],
+    "recepten": [
+      "Gewokte raapstelen",
+      "Preirolletjes uit de oven",
+      "Rabarbercrumble zonder suiker",
+      "Rode kool salade",
+      "Bleekselderij met crème fraîche",
+      "Rode kool met appel"
+    ],
+    "nieuws": ["Biologisch landbouw bevat geen microplastics", "Pinkstermarkt 18 mei", "BD-dineren 11 mei en 19 oktober", "Asperges beschikbaar"]
+  },
+  {
+    "week": 17, "jaar": 2024, "bestand": "pakketbrief-week-17-2024.html",
+    "groenten": ["Spinazie", "Groene eikebladsla", "Paksoi", "Zoete bataat", "Komkommer"],
+    "recepten": [
+      "Asperges met kappertjes",
+      "Spinazie met paddenstoelen en aardappelpuree",
+      "Curry met zoete bataat",
+      "Zoetzure komkommer",
+      "Sla met sinaasappel",
+      "Zoete aardappelkoekjes veganistisch"
+    ],
+    "nieuws": ["Bessengaard in volle bloei", "Asperges beschikbaar in meerdere kwaliteiten", "Pinkstermarkt 18 mei", "BD-dineren 11 mei"]
+  },
+  {
+    "week": 18, "jaar": 2024, "bestand": "pakketbrief-week-18-2024.html",
+    "groenten": ["Kropsla", "Rabarber", "Paksoi", "Rode bieten", "Bleekselderij"],
+    "recepten": [
+      "Sla anders",
+      "Krokante bieten",
+      "Rauwe bietensalade met yoghurtsaus",
+      "Paksoi met kappertjes en olijven",
+      "Rabarberdessert",
+      "Raapstelen en uiensaus",
+      "Asperges met botersaus"
+    ],
+    "nieuws": ["Noorderbos zoekt opvolgers voor biologisch bessenbedrijf", "BD-dineren 11 mei", "Eten wat de pot schaft 29 mei"]
+  },
+  {
+    "week": 51, "jaar": 2024, "bestand": "pakketbrief-week-51-2024.html",
+    "groenten": ["Winterpostelein", "Rode biet", "Spruitjes", "Prei", "Winterpeen", "Zoete bataat", "Stoofperen", "Zuurkool", "Rode puntpaprika", "Courgette"],
+    "recepten": [
+      "Winterpostelein als decoratie",
+      "Rode biet als amuse",
+      "Rode bietensoep met zoete bataat",
+      "Linzenballetjes met rode biet",
+      "Spruiten koken en roerbakken",
+      "Stoofpeertjes",
+      "Zuurkoolsalade met cashewnotencreme en granaatappelpitten",
+      "Worteltagliatelle",
+      "Aardappel-prei gratin",
+      "Geroosterde spicy wortels en hazelnoten",
+      "Courgette met shiitake en madeirasaus",
+      "Paprika met tofoe-kaasvulling",
+      "Bladerdeeg met geitenkaas en vijgenjam"
+    ],
+    "nieuws": ["Kerstspel 21 december", "Crowdfunding 1000x€100 voor de Aarde gestart", "Seminar Denken, voelen en handelen 24-26 januari 2025"]
+  },
+  {
+    "week": 8, "jaar": 2026, "bestand": "pakketbrief-week-08-2026.html",
+    "groenten": ["Winterpostelein", "Pastinaak", "Rode kool", "Moesappels", "Pompoen"],
+    "recepten": [
+      "Pastinaak met mosterdsaus",
+      "Knoflooksaus voor bij salade",
+      "Rode salade met gebakken aardappelen",
+      "Appelmoes",
+      "Chocolademousse van pompoen",
+      "Hartige pompoenpannenkoekjes"
+    ],
+    "nieuws": ["Lening Huis van Saskia oversluiten: €7.000 nog gezocht", "Lentediner Ontluikend groen 13 maart", "Oogstmenu 25 februari en 25 maart"]
+  }
+]

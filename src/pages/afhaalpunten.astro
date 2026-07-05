@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Afhaalpunten" description="Overzicht van alle afhaalpunten in Drenthe voor groenteabonnementen van 't Leeuweriksveld.">
@@ -10,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 
  <div class="broodkruimel">
  <div class="container">
- <a href="/">Home</a> › Afhaalpunten
+ <a href={`${b}/`}>Home</a> › Afhaalpunten
  </div>
  </div>
 

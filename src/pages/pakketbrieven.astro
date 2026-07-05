@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const basis = 'https://www.leeuweriksveld.nl/';
+
+const brieven = {
+  2026: [
+    { week: 25, bestand: 'pakketbrief-week-25-2026.pdf' },
+    { week: 24, bestand: 'pakketbrief-week-24-2026.pdf' },
+    { week: 23, bestand: 'pakketbrief-week-23-2026.pdf' },
+    { week: 22, bestand: 'pakketbrief-week-22-2026.pdf' },
+    { week: 21, bestand: 'pakketbrief-week-21-2026.pdf' },
+    { week: 20, bestand: 'pakketbrief-week-20-2026.pdf' },
+    { week: 19, bestand: 'pakketbrief-week-19-2026.pdf' },
+    { week: 18, bestand: 'pakketbrief-week-18-2026.pdf' },
+    { week: 17, bestand: 'pakketbrief-week-17-2026.pdf' },
+    { week: 16, bestand: 'pakketbrief-week-16-2026.pdf' },
+    { week: 15, bestand: 'pakketbrief-week-15-2026.pdf' },
+    { week: 14, bestand: 'pakketbrief-week-14-2026.pdf' },
+    { week: 13, bestand: 'pakketbrief-week-13-2026.pdf' },
+    { week: 12, bestand: 'pakketbrief-week-12-2026.pdf' },
+    { week: 11, bestand: 'pakketbrief-week-11-2026.pdf' },
+    { week: 10, bestand: 'pakketbrief-week-10-2026.pdf' },
+    { week: 9,  bestand: 'pakketbrief-week-09-2026.pdf' },
+    { week: 8,  bestand: 'pakketbrief-week-08-2026.html' },
+    { week: 7,  bestand: 'pakketbrief-week-07-2026.pdf' },
+    { week: 6,  bestand: 'pakketbrief-week-06-2026.pdf' },
+    { week: 5,  bestand: 'pakketbrief-week-05-2026.pdf' },
+    { week: 4,  bestand: 'pakketbrief-week-04-2026.pdf' },
+    { week: 3,  bestand: 'pakketbrief-week-03-2026.pdf' },
+    { week: 2,  bestand: 'pakketbrief-week-02-2026.pdf' },
+  ],
+  2025: [
+    { week: 51, bestand: 'pakketbrief-week-51-2025.pdf' },
+    { week: 50, bestand: 'pakketbrief-week-50-2025.pdf' },
+    { week: 49, bestand: 'pakketbrief-week-49-2025.pdf' },
+    { week: 48, bestand: 'pakketbrief-week-48-2025.pdf' },
+    { week: 47, bestand: 'pakketbrief-week-47-2025.pdf' },
+    { week: 46, bestand: 'pakketbrief-week-46-2025.pdf' },
+    { week: 45, bestand: 'pakketbrief-week-45-2025.pdf' },
+    { week: 44, bestand: 'pakketbrief-week-44-2025.pdf' },
+    { week: 43, bestand: 'pakketbrief-week-43-2025.pdf' },
+    { week: 42, bestand: 'pakketbrief-week-42-2025.pdf' },
+    { week: 41, bestand: 'pakketbrief-week-41-2025.pdf' },
+    { week: 40, bestand: 'pakketbrief-week-40-2025.pdf' },
+    { week: 39, bestand: 'pakketbrief-week-39-2025.pdf' },
+    { week: 38, bestand: 'pakketbrief-week-38-2025.pdf' },
+    { week: 37, bestand: 'pakketbrief-week-37-2025.pdf' },
+    { week: 36, bestand: 'pakketbrief-week-36-2025.pdf' },
+    { week: 35, bestand: 'pakketbrief-week-35-2025.pdf' },
+    { week: 34, bestand: 'pakketbrief-week-34-2025.pdf' },
+    { week: 33, bestand: 'pakketbrief-week-33-2025.pdf' },
+    { week: 32, bestand: 'pakketbrief-week-32-2025.pdf' },
+    { week: 31, bestand: 'pakketbrief-week-31-2025.pdf' },
+    { week: 30, bestand: 'pakketbrief-week-30-2025.pdf' },
+    { week: 29, bestand: 'pakketbrief-week-29-2025.pdf' },
+    { week: 28, bestand: 'pakketbrief-week-28-2025.pdf' },
+    { week: 27, bestand: 'pakketbrief-week-27-2025.pdf' },
+    { week: 26, bestand: 'pakketbrief-week-26-2025.pdf' },
+    { week: 25, bestand: 'pakketbrief-week-25-2025.pdf' },
+    { week: 24, bestand: 'pakketbrief-week-24-2025.pdf' },
+    { week: 23, bestand: 'pakketbrief-week-23-2025.pdf' },
+    { week: 22, bestand: 'pakketbrief-week-22-2025.pdf' },
+    { week: 21, bestand: 'pakketbrief-week-21-2025.pdf' },
+    { week: 20, bestand: 'pakketbrief-week-20-2025.pdf' },
+    { week: 19, bestand: 'pakketbrief-week-19-2025.pdf' },
+    { week: 18, bestand: 'pakketbrief-week-18-2025.pdf' },
+    { week: 17, bestand: 'pakketbrief-week-17-2025.pdf' },
+    { week: 16, bestand: 'pakketbrief-week-16-2025.pdf' },
+    { week: 15, bestand: 'pakketbrief-week-15-2025.pdf' },
+    { week: 14, bestand: 'pakketbrief-week-14-2025.pdf' },
+    { week: 13, bestand: 'pakketbrief-week-13-2025.pdf' },
+    { week: 12, bestand: 'pakketbrief-week-12-2025.pdf' },
+    { week: 11, bestand: 'pakketbrief-week-11-2025.pdf' },
+    { week: 10, bestand: 'pakketbrief-week-10-2025.pdf' },
+    { week: 9,  bestand: 'pakketbrief-week-09-2025.pdf' },
+    { week: 8,  bestand: 'pakketbrief-week-08-2025.pdf' },
+    { week: 7,  bestand: 'pakketbrief-week-07-2025.pdf' },
+    { week: 6,  bestand: 'pakketbrief-week-06-2025.pdf' },
+    { week: 5,  bestand: 'pakketbrief-week-05-2025.pdf' },
+    { week: 4,  bestand: 'pakketbrief-week-04-2025.pdf' },
+    { week: 3,  bestand: 'pakketbrief-week-03-2025.pdf' },
+    { week: 2,  bestand: 'pakketbrief-week-02-2025.pdf' },
+  ],
+  2024: [
+    { week: '51 & 52', bestand: 'pakketbrief-week-51-2024.html' },
+    { week: 50, bestand: 'pakketbrief-week-50-2024.pdf' },
+    { week: 49, bestand: 'pakketbrief-week-49-2024.pdf' },
+    { week: 48, bestand: 'pakketbrief-week-48-2024.pdf' },
+    { week: 47, bestand: 'pakketbrief-week-47-2024.pdf' },
+    { week: 46, bestand: 'pakketbrief-week-46-2024.pdf' },
+    { week: 45, bestand: 'pakketbrief-week-45-2024.pdf' },
+    { week: 44, bestand: 'pakketbrief-week-44-2024.pdf' },
+    { week: 43, bestand: 'pakketbrief-week-43-2024.pdf' },
+    { week: 42, bestand: 'pakketbrief-week-42-2024.pdf' },
+    { week: 41, bestand: 'pakketbrief-week-41-2024.pdf' },
+    { week: 40, bestand: 'pakketbrief-week-40-2024.pdf' },
+    { week: 39, bestand: 'pakketbrief-week-39-2024.pdf' },
+    { week: 38, bestand: 'pakketbrief-week-38-2024.pdf' },
+    { week: 37, bestand: 'pakketbrief-week-37-2024.pdf' },
+    { week: 36, bestand: 'pakketbrief-week-36-2024.pdf' },
+    { week: 35, bestand: 'pakketbrief-week-35-2024.pdf' },
+    { week: 34, bestand: 'pakketbrief-week-34-2024.pdf' },
+    { week: 33, bestand: 'pakketbrief-week-33-2024.pdf' },
+    { week: 32, bestand: 'pakketbrief-week-32-2024.pdf' },
+    { week: 31, bestand: 'pakketbrief-week-31-2024.pdf' },
+    { week: 30, bestand: 'pakketbrief-week-30-2024.pdf' },
+    { week: 29, bestand: 'pakketbrief-week-29-2024.pdf' },
+    { week: 28, bestand: 'pakketbrief-week-28-2024.pdf' },
+    { week: 27, bestand: 'pakketbrief-week-27-2024.pdf' },
+    { week: 26, bestand: 'pakketbrief-week-26-2024.pdf' },
+    { week: 25, bestand: 'pakketbrief-week-25-2024.pdf' },
+    { week: 24, bestand: 'pakketbrief-week-24-2024.pdf' },
+    { week: 23, bestand: 'pakketbrief-week-23-2024.pdf' },
+    { week: 22, bestand: 'pakketbrief-week-22-2024.pdf' },
+    { week: 21, bestand: 'pakketbrief-week-21-2024.pdf' },
+    { week: 20, bestand: 'pakketbrief-week-20-2024.pdf' },
+    { week: 19, bestand: 'pakketbrief-week-19-2024.pdf' },
+    { week: 18, bestand: 'pakketbrief-week-18-2024.html' },
+    { week: 17, bestand: 'pakketbrief-week-17-2024.html' },
+    { week: 16, bestand: 'pakketbrief-week-16-2024.html' },
+    { week: 15, bestand: 'pakketbrief-week-15-2024.html' },
+    { week: 14, bestand: 'pakketbrief-week-14-2024.html' },
+    { week: 13, bestand: 'pakketbrief-week-13-2024.html' },
+    { week: 12, bestand: 'pakketbrief-week-12-2024.html' },
+    { week: 11, bestand: 'pakketbrief-week-11-2024.html' },
+    { week: 10, bestand: 'pakketbrief-week-10-2024.html' },
+    { week: 9,  bestand: 'pakketbrief-week-09-2024.html' },
+    { week: 8,  bestand: 'pakketbrief-week-08-2024.html' },
+    { week: 7,  bestand: 'pakketbrief-week-07-2024.html' },
+    { week: 6,  bestand: 'pakketbrief-week-06-2024.html' },
+    { week: 5,  bestand: 'pakketbrief-week-05-2024.html' },
+    { week: 4,  bestand: 'pakketbrief-week-04-2024.html' },
+    { week: 3,  bestand: 'pakketbrief-week-03-2024.html' },
+    { week: 2,  bestand: 'pakketbrief-week-02-2024.html' },
+  ],
+};
+
+const jaren = [2026, 2025, 2024] as const;
+---
+
+<Layout title="Pakketbrieven" description="Wekelijkse pakketbrieven van 't Leeuweriksveld met recepten en tips voor uw groenteabonnement — archief 2024 t/m heden.">
+  <div class="pagina-hero">
+    <h1>Pakketbrieven</h1>
+    <p>Wekelijkse brieven met recepten en bereidingstips — archief 2024 t/m nu</p>
+  </div>
+
+  <div class="broodkruimel">
+    <div class="container">
+      <a href={`${b}/`}>Home</a> &rsaquo; <a href={`${b}/nieuws/`}>Nieuws</a> &rsaquo; Pakketbrieven
+    </div>
+  </div>
+
+  <section class="sectie">
+    <div class="container-smal">
+
+      <div class="info-banner">
+        <p>Bij elk groenteabonnement ontvangt u wekelijks een pakketbrief met recepten en bereidingstips voor de groenten van die week. Hieronder vindt u het archief van 2024 tot nu.</p>
+      </div>
+
+      <!-- Jaarnavigatie -->
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+        {jaren.map(jaar => (
+          <a href={`#jaar-${jaar}`} class="knop knop-omlijnd" style="padding: 0.4rem 1rem;">{jaar}</a>
+        ))}
+      </div>
+
+      {jaren.map(jaar => (
+        <div id={`jaar-${jaar}`} style="margin-bottom: 3rem;">
+          <h2 style="border-bottom: 2px solid var(--groen-zacht); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">{jaar}</h2>
+          <div class="pakket-grid">
+            {brieven[jaar].map(b => (
+              <a
+                href={`${basis}${b.bestand}`}
+                target="_blank"
+                rel="noopener"
+                class="pakket-item"
+              >
+                <span class="pakket-week">Week {b.week}</span>
+                <span class="pakket-type">{b.bestand.endsWith('.pdf') ? 'PDF' : 'HTML'}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .pakket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .pakket-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.6rem 0.5rem;
+    border: 1px solid var(--groen-zacht);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--tekst);
+    background: white;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .pakket-item:hover {
+    background: var(--groen-zacht);
+    border-color: var(--groen);
+  }
+
+  .pakket-week {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .pakket-type {
+    font-size: 0.7rem;
+    color: var(--tekst-zacht);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

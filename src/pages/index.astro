@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Home">
@@ -9,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
 
  <!-- Hero met veldFoto als achtergrond -->
  <section class="hero">
- <div class="hero-achtergrond" style="background-image: url('/afb/leeuweriksveld_veld.png');"></div>
+ <div class="hero-achtergrond" style={`background-image: url(\'${b}/afb/leeuweriksveld_veld.png\')`}></div>
  <div class="hero-overlay"></div>
  <div class="hero-inner">
  <h1>Gezonde groenten, recht van het land</h1>
@@ -18,8 +19,8 @@ import Layout from '../layouts/Layout.astro';
  wij seizoensgroenten met liefde voor mens, dier en aarde.
  </p>
  <div class="hero-knoppen">
- <a href="/abonnementen" class="knop knop-primair">Bekijk onze abonnementen</a>
- <a href="/over-ons" class="knop knop-secundair">Over ons</a>
+ <a href={`${b}/abonnementen`} class="knop knop-primair">Bekijk onze abonnementen</a>
+ <a href={`${b}/over-ons`} class="knop knop-secundair">Over ons</a>
  </div>
  <div class="badge-rij">
  <span class="badge">Demeter gecertificeerd</span>
@@ -31,9 +32,9 @@ import Layout from '../layouts/Layout.astro';
 
  <!-- Drie foto's van de lichtworteloogst -->
  <div class="foto-wand foto-wand-3">
- <img src="/afb/lw-floriaan-met-net-geoogste-lichtwortel.jpg" alt="Oogst van lichtwortel" />
- <img src="/afb/lw-zehra-met-net-geoogste-lichtwortel.jpg" alt="Verse lichtwortel geoogst" />
- <img src="/afb/lw-blootgelegde-lichtwortels.jpg" alt="Lichtwortel in krat" />
+ <img src={`${b}/afb/lw-floriaan-met-net-geoogste-lichtwortel.jpg`} alt="Oogst van lichtwortel" />
+ <img src={`${b}/afb/lw-zehra-met-net-geoogste-lichtwortel.jpg`} alt="Verse lichtwortel geoogst" />
+ <img src={`${b}/afb/lw-blootgelegde-lichtwortels.jpg`} alt="Lichtwortel in krat" />
  </div>
 
  <!-- Wat we aanbieden -->
@@ -47,27 +48,27 @@ import Layout from '../layouts/Layout.astro';
  <div class="kaart">
  <h3>Groenteabonnementen</h3>
  <p>Wekelijks een pakket seizoensgroenten, samengesteld vanuit ons land. Kies uit 1- tot 4-persoonsabonnementen, met of zonder fruit.</p>
- <a href="/abonnementen" class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
+ <a href={`${b}/abonnementen`} class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
  </div>
  <div class="kaart">
  <h3>Zelfoogsten</h3>
  <p>Word lid en oogst zelf groenten van het veld — op vijf dagen in de week, van voorjaar tot winter. Voor hele gezinnen.</p>
- <a href="/zelfoogsten" class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
+ <a href={`${b}/zelfoogsten`} class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
  </div>
  <div class="kaart">
  <h3>Boerderijwinkel</h3>
  <p>Bezoek onze winkel aan de Zandzoom. Verse groenten, fruit en meer — rechtstreeks van het land.</p>
- <a href="/openingstijden" class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Openingstijden</a>
+ <a href={`${b}/openingstijden`} class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Openingstijden</a>
  </div>
  <div class="kaart">
  <h3>Verse lichtwortel</h3>
  <p>Wij verbouwen verse lichtwortel (schorseneer), een zeldzame en bijzonder smakelijke wortelgroente, direct leverbaar.</p>
- <a href="/verse-lichtwortel" class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
+ <a href={`${b}/verse-lichtwortel`} class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Meer informatie</a>
  </div>
  <div class="kaart">
  <h3>Blauwe Bessengaard</h3>
  <p>Naast de groentekwekerij hebben we een blauwebessengaard. In de zomer kunt u zelf plukken tijdens onze open dagen.</p>
- <a href="/nieuws" class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Nieuws</a>
+ <a href={`${b}/nieuws`} class="knop knop-groen" style="margin-top:1rem; font-size:0.88rem; padding: 0.5rem 1.2rem;">Nieuws</a>
  </div>
  <div class="kaart">
  <h3>Webwinkel</h3>
@@ -82,12 +83,12 @@ import Layout from '../layouts/Layout.astro';
  <section class="sectie sectie-alt">
  <div class="container">
  <div class="foto-tekst-grid">
- <img src="/afb/lw-lichtwortel-schoon.jpg" alt="Lichtwortel in de grond" />
+ <img src={`${b}/afb/lw-lichtwortel-schoon.jpg`} alt="Lichtwortel in de grond" />
  <div>
  <h2>Biologisch-dynamisch boeren</h2>
  <p>Bij 't Leeuweriksveld werken wij volgens de biologisch-dynamische methode — een holistische benadering die verdergaat dan gewoon biologisch. Wij houden rekening met de seizoenen, de maan en de bodemgezondheid.</p>
  <p>Ons bedrijf is gecertificeerd door <strong>Demeter</strong> en voldoet aan de Europese biologische standaard. We zijn aangesloten bij <strong>Stichting Mensen voor de Aarde</strong>.</p>
- <a href="/geschiedenis" class="knop knop-groen" style="margin-top: 0.5rem;">Onze geschiedenis</a>
+ <a href={`${b}/geschiedenis`} class="knop knop-groen" style="margin-top: 0.5rem;">Onze geschiedenis</a>
  </div>
  </div>
  </div>
@@ -107,7 +108,7 @@ import Layout from '../layouts/Layout.astro';
  <tr><td>Di, Wo, Zo</td><td class="gesloten">Gesloten</td></tr>
  </table>
  <p style="margin-top: 1rem; font-size: 0.9rem;">
- <a href="/contact">Zandzoom 72, Emmen</a><br />
+ <a href={`${b}/contact`}>Zandzoom 72, Emmen</a><br />
  <a href="tel:0591381445">0591-381445</a>
  </p>
  </div>
@@ -125,7 +126,7 @@ import Layout from '../layouts/Layout.astro';
  <p>Rondleiding over het bedrijf gevolgd door een biologisch-dynamisch diner. Deelname &euro;42,50 per persoon.</p>
  </div>
  </div>
- <a href="/nieuws" class="knop knop-groen" style="margin-top: 1.5rem; display: inline-block;">Alle nieuws</a>
+ <a href={`${b}/nieuws`} class="knop knop-groen" style="margin-top: 1.5rem; display: inline-block;">Alle nieuws</a>
  </div>
  </div>
  </div>

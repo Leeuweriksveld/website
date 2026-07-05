@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pakketbrief uploaden — 't Leeuweriksveld</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, serif;
+      background: #f5f2ec;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .kaart {
+      background: white;
+      border-radius: 10px;
+      padding: 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .logo {
+      font-size: 1.1rem;
+      color: #5a7a3a;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #2c3e20;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #444;
+      margin-bottom: 0.4rem;
+    }
+    input[type="password"],
+    input[type="number"] {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid #d0ccc4;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      font-family: inherit;
+    }
+    input:focus { outline: none; border-color: #5a7a3a; }
+
+    .upload-zone {
+      border: 2px dashed #b5c9a0;
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.over { background: #f0f6e8; border-color: #5a7a3a; }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+    .upload-zone p { color: #666; font-size: 0.95rem; }
+    .upload-zone .bestandsnaam { color: #5a7a3a; font-weight: bold; margin-top: 0.5rem; font-size: 0.9rem; }
+
+    .rij { display: flex; gap: 1rem; }
+    .rij > div { flex: 1; }
+
+    button {
+      width: 100%;
+      background: #5a7a3a;
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 0.5rem;
+    }
+    button:hover { background: #4a6530; }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+
+    .melding {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .melding.succes { background: #e8f5d8; color: #2c5a10; display: block; }
+    .melding.fout { background: #fde8e8; color: #7a1a1a; display: block; }
+    .melding.bezig { background: #e8f0fd; color: #1a3a7a; display: block; }
+
+    .voortgang { margin-top: 0.75rem; font-size: 0.85rem; color: #555; }
+    .stap { padding: 0.2rem 0; }
+    .stap.actief { color: #5a7a3a; font-weight: bold; }
+    .stap.klaar::before { content: "✓ "; }
+  </style>
+</head>
+<body>
+<div class="kaart">
+  <div class="logo">'t Leeuweriksveld</div>
+  <h1>Pakketbrief uploaden</h1>
+
+  <form id="formulier">
+    <label for="wachtwoord">Wachtwoord</label>
+    <input type="password" id="wachtwoord" placeholder="••••••••" required autocomplete="current-password" />
+
+    <div class="rij">
+      <div>
+        <label for="week">Weeknummer</label>
+        <input type="number" id="week" min="1" max="53" placeholder="bijv. 27" required />
+      </div>
+      <div>
+        <label for="jaar">Jaar</label>
+        <input type="number" id="jaar" min="2024" max="2030" placeholder="2026" required />
+      </div>
+    </div>
+
+    <label>PDF of HTML-bestand</label>
+    <div class="upload-zone" id="uploadzone">
+      <input type="file" id="bestand" accept=".pdf,.html" required />
+      <p>Sleep een PDF of HTML hier naartoe<br />of klik om te bladeren</p>
+      <div class="bestandsnaam" id="bestandsnaam"></div>
+    </div>
+
+    <button type="submit" id="knop">Uploaden en verwerken</button>
+  </form>
+
+  <div class="melding" id="melding"></div>
+  <div class="voortgang" id="voortgang"></div>
+</div>
+
+<script>
+  // Bestandsnaam tonen bij selectie
+  document.getElementById('bestand').addEventListener('change', function() {
+    const naam = this.files[0]?.name || '';
+    document.getElementById('bestandsnaam').textContent = naam;
+    // Weeknummer raden uit bestandsnaam (bijv. pakketbrief-week-27-2026.pdf)
+    const m = naam.match(/week[_-](\d+)[_-](\d{4})/i);
+    if (m) {
+      document.getElementById('week').value = parseInt(m[1]);
+      document.getElementById('jaar').value = parseInt(m[2]);
+    }
+  });
+
+  // Drag & drop styling
+  const zone = document.getElementById('uploadzone');
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+  zone.addEventListener('drop', () => zone.classList.remove('over'));
+
+  // Jaar standaard op huidig jaar
+  document.getElementById('jaar').value = new Date().getFullYear();
+
+  document.getElementById('formulier').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const knop = document.getElementById('knop');
+    const melding = document.getElementById('melding');
+    const voortgang = document.getElementById('voortgang');
+
+    knop.disabled = true;
+    melding.className = 'melding bezig';
+    melding.textContent = 'Bezig met verwerken…';
+    voortgang.innerHTML = '';
+
+    const stappen = ['PDF uitlezen', 'Recepten herkennen via AI', 'Opslaan in website', 'Site herbouwen'];
+    stappen.forEach((s, i) => {
+      const el = document.createElement('div');
+      el.className = 'stap';
+      el.id = `stap${i}`;
+      el.textContent = s;
+      voortgang.appendChild(el);
+    });
+
+    const formData = new FormData();
+    formData.append('wachtwoord', document.getElementById('wachtwoord').value);
+    formData.append('week', document.getElementById('week').value);
+    formData.append('jaar', document.getElementById('jaar').value);
+    formData.append('bestand', document.getElementById('bestand').files[0]);
+
+    // Simuleer stappen visueel terwijl we wachten
+    let stapIndex = 0;
+    const stapTimer = setInterval(() => {
+      if (stapIndex > 0) document.getElementById(`stap${stapIndex-1}`).className = 'stap klaar';
+      if (stapIndex < stappen.length) {
+        document.getElementById(`stap${stapIndex}`).className = 'stap actief';
+        stapIndex++;
+      }
+    }, 4000);
+
+    try {
+      // VERVANG_MET_NETLIFY_URL met de URL van je Netlify-functie na deployment
+      const apiUrl = window.UPLOAD_API_URL || 'VERVANG_MET_NETLIFY_URL';
+      const res = await fetch(apiUrl, { method: 'POST', body: formData });
+      clearInterval(stapTimer);
+
+      stappen.forEach((_, i) => {
+        document.getElementById(`stap${i}`).className = 'stap klaar';
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        melding.className = 'melding succes';
+        melding.innerHTML = `✓ Pakketbrief week ${data.week}, ${data.jaar} verwerkt!<br>
+          <strong>${data.aantalRecepten} recepten</strong> en <strong>${data.aantalGroenten} groenten</strong> herkend.<br>
+          De site wordt binnen een minuut bijgewerkt.`;
+        document.getElementById('formulier').reset();
+        document.getElementById('bestandsnaam').textContent = '';
+        document.getElementById('jaar').value = new Date().getFullYear();
+      } else {
+        const fout = await res.json().catch(() => ({ bericht: 'Onbekende fout' }));
+        throw new Error(fout.bericht || `Fout ${res.status}`);
+      }
+    } catch (err) {
+      clearInterval(stapTimer);
+      melding.className = 'melding fout';
+      melding.textContent = `Fout: ${err.message}`;
+    }
+    knop.disabled = false;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "leeuweriksveld-upload-api",
+  "version": "1.0.0",
+  "description": "Serverless functie voor pakketbrief upload",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.27.0",
+    "parse-multipart-data": "^1.5.0",
+    "pdf-parse": "^1.1.1"
+  }
+}

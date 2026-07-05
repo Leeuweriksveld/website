@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Nieuws" description="Het laatste nieuws van 't Leeuweriksveld — evenementen, aankondigingen en mededelingen.">
@@ -10,12 +11,27 @@ import Layout from '../layouts/Layout.astro';
 
  <div class="broodkruimel">
  <div class="container">
- <a href="/">Home</a> › Nieuws
+ <a href={`${b}/`}>Home</a> › Nieuws
  </div>
  </div>
 
  <section class="sectie">
  <div class="container-smal">
+
+   <div class="uitgelicht-blok" style="background: var(--groen-zacht); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+     <div style="flex: 1; min-width: 200px;">
+       <p style="font-size: 0.8rem; color: var(--groen); font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">Specialiteit van het bedrijf</p>
+       <h2 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Verse lichtwortel (schorseneer)</h2>
+       <p style="margin-bottom: 1rem;">Wij telen verse lichtwortel — een zeldzame, bijzondere wortelgroente met een fijne smaak. Rechtstreeks van ons land te verkrijgen in de boerderijwinkel en webwinkel.</p>
+       <a href={`${b}/verse-lichtwortel/`} style="display: inline-block; background: var(--groen); color: white; padding: 0.5rem 1.25rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem;">Meer over lichtwortel</a>
+     </div>
+     <img src={`${b}/afb/lw-lichtwortel-schoon.jpg`} alt="Verse lichtwortel" style="width: 160px; height: 160px; object-fit: cover; border-radius: 6px; flex-shrink: 0;" />
+   </div>
+
+ <div style="margin-bottom: 2rem;">
+   <a href={`${b}/pakketbrieven/`} class="knop knop-omlijnd">📄 Pakketbrieven archief (2024–nu)</a>
+ </div>
+
  <div class="nieuws-lijst">
 
  <div class="nieuws-kaart">

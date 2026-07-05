@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Contact" description="Neem contact op met 't Leeuweriksveld in Emmen. Telefoon, e-mail, adres en openingstijden.">
@@ -10,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 
  <div class="broodkruimel">
  <div class="container">
- <a href="/">Home</a> › Contact
+ <a href={`${b}/`}>Home</a> › Contact
  </div>
  </div>
 
@@ -25,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
  Zandzoom 72<br />
  7814 VJ Emmen</span>
  </div>
- <a href="/routebeschrijving" class="knop knop-groen" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.5rem 1.2rem;">Routebeschrijving →</a>
+ <a href={`${b}/routebeschrijving`} class="knop knop-groen" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.5rem 1.2rem;">Routebeschrijving →</a>
  </div>
 
  <div class="contact-kaart">

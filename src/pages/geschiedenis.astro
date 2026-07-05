@@ -1,63 +1,314 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Geschiedenis" description="De geschiedenis van 't Leeuweriksveld — van Dalen (2004) via Orvelte naar Wilhelmsoord in Emmen.">
- <div class="pagina-hero">
- <h1>Onze geschiedenis</h1>
- <p>Van een kleine akker in Dalen tot een volledig biologisch-dynamisch bedrijf in Emmen</p>
- </div>
+  <div class="pagina-hero">
+    <h1>Onze geschiedenis</h1>
+    <p>Van een kleine akker in Dalen tot een biologisch-dynamisch bedrijf in Emmen</p>
+  </div>
 
- <div class="broodkruimel">
- <div class="container">
- <a href="/">Home</a> › Geschiedenis
- </div>
- </div>
+  <div class="broodkruimel">
+    <div class="container">
+      <a href={`${b}/`}>Home</a> &rsaquo; Geschiedenis
+    </div>
+  </div>
 
- <section class="sectie">
- <div class="container-smal">
+  <section class="sectie">
+    <div class="container-smal">
 
- <div class="inhoud-blok">
- <h2>De beginperiode</h2>
- <p>De oprichters wilden biologisch-dynamische landbouw combineren met sociale driegeleding. Daarvoor werkten zij eerst op verschillende boerderijen in Duitsland en Nederland, waar zij het vak leerden kennen en de grondslagen legden voor hun eigen bedrijf.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>Een stukje voorgeschiedenis</h2>
+        <p>We wilden op een bedrijf werken, waar we gezonde biologisch-dynamische landbouw konden verenigen met de idealen van de sociale driegeleding. Vóór de tijd van het Leeuweriksveld hebben we op verschillende boerderijen in Duitsland en Nederland gewerkt, met het idee om op lange termijn in zo'n bedrijf te stappen. Toch waren we bij geen van de bedrijven op onze plek. Na de geboorte van onze twee dochters hebben we besloten om voor onszelf te beginnen.</p>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Eerste locatie: Dalen (2004)</h2>
- <p>Wouter begon in 2004 in Dalen met de teelt van prei, spitskool en bospeen — aanvankelijk voor collega-telers en voor groothandel De Zaai-Ster. De naam 't Leeuweriksveld ontstond door de jubelende leeuweriken die boven de akker vlogen. Na drie jaar was het moment gekomen om het bedrijf uit te breiden.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>Hoe begin je een boerderij?</h2>
+        <h3>— zonder een plek te erven en zonder geld —</h3>
+        <p>We hebben de meest uiteenlopende plannen gemaakt voor een bedrijf met weinig grond en weinig startkapitaal. Van 1000&ndash;3000 legkippen tot het telen van groentes, overal zat wel een haak aan. En we hadden een aantal randvoorwaarden: in Nederland, wel dicht bij de Duitse grens, in de buurt van een Vrije school voor onze kinderen. In Emmen was in 2003 een Vrije school met daarbinnen een initiatief voor een grensoverschrijdende tweetalige school. Dat leek goed bij ons te passen. We zochten contact met biologische boeren, met de vraag om een stuk biologisch land te pachten.</p>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Tweede locatie: Orvelte (2007–2008)</h2>
- <p>Het bedrijf verhuisde naar de Wenning in Orvelte. Inmiddels waren er 250 groente-abonnees en een eigen winkel. De eenmanszaak werd omgezet naar een V.o.f. met Wouter en Kathinka als vennoten.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>Begin van &lsquo;Het Leeuweriksveld&rsquo;</h2>
+        <p>Al snel kwamen we bij De Sterke Akkers in Dalen terecht, waar Wouter aan het begin van 2004 1,7 ha land pachtte en de nodige machines en opslagruimte mocht gebruiken. We woonden in een rijtjeshuis in Coevorden. Wouter teelde prei, spitskool en bospeen voor collega&rsquo;s en groothandel De Zaai-Ster. Van de jubelende leeuweriken boven de akker kreeg de eenmanszaak zijn naam. In het eerste jaar ging ons laatste spaargeld erdoorheen en aten we wel 3 x per week prei. De volgende twee jaar was het heel hard werken en langzaam werd het bedrijf stabieler. Vooral de bospeen werd gewaardeerd bij de collega&rsquo;s. Elke dinsdag reed Wouter naar een uitwisseling met collega bio-boeren. In het derde jaar had het bedrijf zoveel vorm gekregen, dat Wouter een eigen trekker kon kopen. Maar daardoor was er ook geen ruimte meer voor een vierde jaar op de Sterke Akkers. Het Leeuweriksveld was zijn eerste plek ontgroeid.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-wouter-zaait.jpg`} alt="Wouter met de handzaaier" />
+          <figcaption>Wouter met de handzaaier in Dalen</figcaption>
+        </figure>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Derde locatie: Wilhelmsoord, Emmen (vanaf 2009)</h2>
- <p>In augustus 2008 werd een beslissing genomen: twintig mensen stelden zich borg met achtergestelde leningen, samen een ton waard, om de verhuizing mogelijk te maken. Het bedrijf verhuisde in januari 2009 naar de huidige locatie aan de Zandzoom in Emmen (Wilhelmsoord), waar het sindsdien is uitgegroeid tot wat het nu is.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>Twee jaar in Orvelte</h2>
+        <p>&lsquo;t Leeuweriksveld kreeg in februari 2007 een nieuwe plek voor maximaal twee jaar op de Wenning bij Orvelte, gepaard met een flinke uitbreiding: 250 groente-abonnees en een kleine boerderij(natuur)winkel.</p>
+        <p>De groenteteelt kreeg veel meer variatie. We konden in een piepklein vakantieappartement op de boerderij wonen. De eenmanszaak werd een V.o.f. met Wouter en Kathinka als vennoten.</p>
+        <p>Het bedrijf groeide naar alle kanten: er kwamen vaste medewerkers in dienst. Scholieren in de zomer en de eerste vrijwilligers. Het machinepark werd uitgebreid met een kleine vrachtwagen voor de pakketritten, een plantmachine, schoffeltuig voor de trekker. En we hadden voor het eerst een grote particuliere klantenkring. We namen ook de groenteabonnees van De Morene en De Inspring over.</p>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-logo-leeuweriksveld.jpg`} alt="Het eerste logo van 't Leeuweriksveld" />
+            <figcaption>Het eerste logo</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-orvelte-fruitpakketten.jpg`} alt="Fruitpakketten voor de abonnees in Orvelte" />
+            <figcaption>Fruitpakketten voor de abonnees</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-orvelte-akker.jpg`} alt="De akker in Orvelte" />
+            <figcaption>De akker in Orvelte</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-orvelte-winter.jpg`} alt="Winter op de akker in Orvelte" />
+            <figcaption>Winter op de akker in Orvelte</figcaption>
+          </figure>
+        </div>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Stichting Mensen voor de Aarde</h2>
- <p>Rondom het bedrijf werd de <strong>Stichting Mensen voor de Aarde</strong> opgericht — een organisatie die als belangeloze eigenaar van boerderijen optreedt en deze ter beschikking stelt aan telers die gezonde, biologische landbouw bedrijven. Deze constructie biedt boeren bestaanszekerheid en maakt de grond vrij van speculatie.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>De volgende plek</h2>
+        <p>Zomer 2008 werd de vraag langzaam dringend: waar zouden we vanaf februari 2009 ons bedrijf kunnen voortzetten? Een boerderij pachten? Een loods huren en daar groentepakketten inpakken? Een boerderij kopen? Het laatste leek eigenlijk onmogelijk. En toch: Wouter kwam in Wilhelmsoord bij een boer voor machines. Die waren niet passend voor ons, maar wel de plek&hellip; Van het één kwam het ander en de onderhandelingen kwamen op gang.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-schuur-oorspronkelijk.jpg`} alt="De schuur in oorspronkelijke toestand" />
+          <figcaption>De schuur in oorspronkelijke toestand</figcaption>
+        </figure>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Verdere ontwikkelingen</h2>
- <ul>
- <li><strong>Blauwe Bessengaard</strong> — uitbreiding met bramen- en bessengaard</li>
- <li><strong>Oogsten Koken en Eten</strong> — cateringactiviteit vanuit de boerderij</li>
- <li><strong>De Leeuwerikken</strong> — een koor ontstaan rondom het bedrijf</li>
- <li><strong>'t Leeuweriksnest</strong> — boerderijschool, gestart in 2016</li>
- <li><strong>2018</strong> — aanleg van een vijver voor biodiversiteit</li>
- </ul>
- </div>
+      <div class="inhoud-blok">
+        <h2>Een bijzondere bijeenkomst</h2>
+        <p>In augustus 2008 namen we een spannende beslissing: we wilden de boerderij in Wilhelmsoord kopen, maar konden dit niet alleen. Zouden er mensen zijn, die ons wilden helpen? Daarop kregen we een ongelooflijk hartverwarmend antwoord op 22 augustus. Het begrip crowdfunding bestond toen nog niet, maar twintig mensen boden volop hulp met het geven van achtergestelde leningen, samen een ton waard. We kregen hulp bij het opstellen van een bedrijfsplan, hulp bij verbouwing en verhuizing.</p>
+      </div>
 
- <div class="inhoud-blok">
- <h2>Heden</h2>
- <p>"We hebben het grote geluk dat we als biologisch groenteteeltbedrijf met boerderijwinkel vrij uniek zijn in de regio." Het bedrijf groeit gestaag, heeft meer dan 40 afhaalpunten door Drenthe en bedient honderden abonnees — een levend bewijs dat eerlijk en duurzaam voedsel loont.</p>
- </div>
+      <div class="inhoud-blok">
+        <h2>Verbouwing en verhuizing</h2>
+        <p>Voordat het bedrijf kon verhuizen moesten een aantal noodzakelijke verbouwingen plaatsvinden: de schuur kreeg een gladde betonnen vloer, de koestal werd omgebouwd tot koelcel, de vrachtwagen kreeg een laadkuil vóór de schuur. In het laatste weekeinde van januari 2009 verhuisde het bedrijf. Een enorme klus, maar er waren voor alle taken genoeg helpende handen, zodat de sfeer bijna feestelijk was. Drie dagen later konden we de eerste groentepakketten vanuit Wilhelmsoord leveren.</p>
+        <p>Bij de boerderij hoorden 2 ha land, een halve ha erf en we konden er nog 3 ha bij pachten. Alles moest omgeschakeld naar biologisch. De meeste klanten wilden gelukkig ook onze producten zonder een keurmerk kopen, zodat eind februari de eerste plantjes de grond in gingen. Door een faillissement ging de natuurwinkel in Emmen op dat moment vijf weken dicht. We hebben binnen één week onze boerderijwinkel geopend. Meer reclame was nauwelijks nodig!</p>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-verbouwing-stal.jpg`} alt="Verbouwing: stal wordt winkel en koelcel" />
+            <figcaption>Verbouwing: stal wordt winkel en koelcel</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-winkel.jpg`} alt="De boerderijwinkel" />
+            <figcaption>De boerderijwinkel</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-winkel2.jpg`} alt="De boerderijwinkel van binnen" />
+            <figcaption>De winkel van binnen</figcaption>
+          </figure>
+        </div>
+      </div>
 
- </div>
- </section>
+      <div class="inhoud-blok">
+        <h2>10 jaar</h2>
+        <p>Na 5 jaar zwerven en 5 jaar in Wilhelmsoord bestaat &lsquo;t Leeuweriksveld in 2014 al weer 10 jaar. Heel veel is opgebouwd, heel veel hebben we gekregen: alle akkers kunnen worden beregend, we hebben een tweede tunnelkas opgezet.</p>
+        <p>Het schuurdak is grondig vernieuwd: &lsquo;asbest eraf, zonnecellen erop&rsquo;, de schuur-gevels zijn met mooie planken gerenoveerd. Voor de machines is er een kapschuur. Achter de asperges is een kleine haag aangeplant. We hebben de grond aardig goed leren kennen, de vruchtwisseling van de landbouw-gewassen heeft zo langzaam zijn vaste vorm gekregen.</p>
+        <p>En we blijven doorgaan met nieuwe plannen en wensen:</p>
+        <ul>
+          <li>Op de zolder van de schuur is een ruimte voor vele mogelijkheden.</li>
+          <li>We zouden een drainage aan willen leggen op het pachtland.</li>
+          <li>Nog een derde tunnelkas erbij zou ons aanbod aan vroege en late groentes vergroten.</li>
+          <li>We willen stichting Mensen voor de Aarde oprichten, die eigenaar van &lsquo;t Leeuweriksveld wordt.</li>
+        </ul>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-10-jaar.jpg`} alt="Affiche bij 10-jarig bestaan" />
+            <figcaption>Affiche bij het 10-jarig bestaan</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-nieuw-dak.jpg`} alt="Nieuw dak op de schuur" />
+            <figcaption>Nieuw dak op de schuur</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-kapschuur.jpg`} alt="De kapschuur" />
+            <figcaption>De kapschuur voor de machines</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>Stichting Mensen voor de Aarde</h2>
+        <p>De stichting wil een praktische bijdrage leveren aan het ideaal: &lsquo;Grond is geen koopwaar.&rsquo; De oude natuurvolken wisten al: grond is niet door de mensen gemaakt en kan niet bezit van iemand zijn. Hij kan wel met zorg beheerd worden.</p>
+        <p>Hierin wil de stichting een schakel zijn: zij wordt belangeloze eigenaar van boerderijen en stelt deze dan ter beschikking aan boeren, die gezonde, grondgebonden landbouw willen bedrijven. Voor startende bedrijven helpt de stichting met de crowdfunding voor de aankoop, bij een overnamesituatie vervallen de torenhoge kosten voor een nieuwe koop. Zo kunnen de boeren meer aandacht richten op een gezondmakende landbouw.</p>
+        <p>Bestuursleden van de stichting kunnen zelf nooit meer speculeren met de eigendommen van de stichting, zij werken vrijwillig en inkomsten zijn 100% voor het goede doel.</p>
+        <p>Omdat dit niet alleen een zaak is voor de boer op zijn bedrijf, kan iedereen meedoen door mee te financieren en helpt zo bouwen aan een andere kijk op de wereld.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-logo-mvda.gif`} alt="Logo Mensen voor de Aarde" style="max-width: 200px;" />
+          <figcaption>Logo Stichting Mensen voor de Aarde</figcaption>
+        </figure>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>Mensen en dieren</h2>
+        <p>In Dalen had Wouter af en toe een enkele hulp. In Orvelte hadden we de eerste medewerkers in dienst en ook de eerste vaste vrijwilligers, scholieren voor het wieden en oogsten in de zomer. In Wilhelmsoord werken we met twee vaste medewerkers en een grote groep vrijwilligers die allen zo hun vaste taak hebben.</p>
+        <p>Sinds 2010 zijn er ook stagiaires van de Warmonderhof, sommigen voor enkele dagen in de week, sommigen aanéénlopend voor een half jaar. Het is leuk om te zien dat zij hier graag komen, en veel kunnen leren. En niet te vergeten onze plant- en verbouwacties, waar altijd volop helpende handen erbij kwamen. Van harte dank aan jullie allen!</p>
+        <p>Gelukkig jubelen de leeuweriken ook in Wilhelmsoord! En het mooie van een vaste plek is dat we nu ook huisdieren kunnen houden. Behalve dat zij een goede sfeer aan de boerderij geven, hebben ook alle dieren hun eigen taak: de koeien weiden op de rustgewassen, ze leveren waardevolle mest en af en toe vlees, de kippen verwerken resten en de eenden eten de slakken, allebei geven ze eieren. De katten vangen muizen en zorgen voor behaaglijkheid. De bijen zorgen voor de bevruchting.</p>
+        <p>En ook mooie wilde dieren verrijken de boerderij: zoals de zwaluwen en uilen in de schuur of de egel in de bosjes.</p>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-aardappelsrooien.jpg`} alt="Aardappels rooien" />
+            <figcaption>Aardappels rooien</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-boesie.jpg`} alt="Boesie met jongen" />
+            <figcaption>Boesie met jongen</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-koeien.jpg`} alt="Koeien op de boerderij" />
+            <figcaption>Koeien op de boerderij</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-zwaluwnest.jpg`} alt="Zwaluwnest in de schuur" />
+            <figcaption>Zwaluwnest in de schuur</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-eenden.jpg`} alt="Eenden op de boerderij" />
+            <figcaption>Eenden op de boerderij</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-rondleiding-orvelte.jpg`} alt="Rondleiding in Orvelte (2007)" />
+            <figcaption>Rondleiding in Orvelte, 2007</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>Kringlopen en preparaten op de boerderij</h2>
+        <p>Een zelfvoorzienende, grondgebonden landbouw is het meest effectief, eenvoudig en gezond voor allen, die daarvan leven. Weinig verspilling en weinig uitbuiting. De mens werkt goed samen met alles wat met hem leeft: dieren, planten, grond, en micro-organismen.</p>
+        <p>Op dit moment zijn we nog niet zelfvoorzienend wat betreft de mest. Om van onze kleine boerderij te kunnen leven, moeten we op 2&ndash;2,5 hectare groente telen, en daarvoor leveren onze eigen koeien niet genoeg mest. We hebben nu een samenwerking met bd-zorgboerderij De Naoberhoeve in Echten voor mest en rundvee.</p>
+        <p>De preparaten van de biologisch-dynamische landbouw helpen om van de geoogste producten een goed voedingsmiddel te maken, dat de héle mens: lichaam, ziel en geest, voedt.</p>
+        <p>Op de preparatendagen kan iedereen meewerken aan de &ldquo;fijnstoffelijke bemesting&rdquo; op onze boerderij.</p>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-wouter-en-kathinka.jpg`} alt="Wouter en Kathinka" />
+            <figcaption>Wouter en Kathinka</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-groentebedden.jpg`} alt="Rijen groente in bedden" />
+            <figcaption>Rijen groente in bedden</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-bloemenmengsel.jpg`} alt="Wilde bloemen" />
+            <figcaption>Wilde bloemen op het bedrijf</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-preparaten-roeren1.jpg`} alt="Preparaten roeren" />
+            <figcaption>Preparaten roeren</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-preparaten-roeren2.jpg`} alt="Preparaten roeren" />
+            <figcaption>Preparaten roeren (detail)</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>2015 en 2016 &mdash; twee jaren van verbreding</h2>
+        <p>2015 en 2016 zijn bijzondere jaren. Het leven op een vaste plek geeft meer rust in het dagelijkse werk. De boerderijwinkel is gegroeid tot een centrum van ontmoetingen met een kring van trouwe mensen. We hebben af en toe rondleidingen over de boerderij en Wouter is altijd graag bereid om als spreker te komen voor een lezing over ons bedrijf en onze idealen. Daarnaast komt er weer ruimte voor nieuwe projecten.</p>
+        <p>De drie hectare pachtland zijn ons te koop aangeboden en we willen nu de stap zetten om deze grond uit het privébezit te halen. Stichting Mensen voor de Aarde wordt in mei 2015 opgericht. Met een spetterende actie &ldquo;1000 x &euro;100,&ndash;&rdquo; komt er genoeg schenk- en leengeld om het land begin 2016 zonder hulp van een bank te kopen en over te dragen aan de stichting.</p>
+        <p>&lsquo;t Leeuweriksveld CV met stichting Mensen voor de Aarde als stille vennoot wordt de nieuwe bedrijfsvorm.</p>
+        <p>Verder lijkt de boerderij steeds meer een broedplaats te worden voor nieuwe initiatieven:</p>
+        <p>De <strong>Blauwe Bessengaard</strong> van de familie Besselink heeft zijn vaste plek gekregen op &frac14; hectare van het land.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-bessengaard.jpg`} alt="De Blauwe Bessengaard" />
+          <figcaption>De Blauwe Bessengaard</figcaption>
+        </figure>
+        <p>Alberta Rollema verzorgt sinds mei 2015 de Aanschuiftafel, het eerste begin van haar bedrijf: <strong>Oogsten Koken en Eten</strong>. De Aanschuiftafel is een gezellige gelegenheid om van een lekker biologisch driegangenmenu te genieten, en nog betaalbaar ook! Oogsten Koken en Eten is een zeer geslaagde formule voor een bedrijfsuitje of familiebijeenkomst.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-oogstenkokeneneten.png`} alt="Oogsten Koken en Eten" />
+          <figcaption>Oogsten Koken en Eten</figcaption>
+        </figure>
+        <p>In 2015 is ook het begin van koor <strong>&ldquo;De Leeuwerikken&rdquo;</strong>. Kathinka pakt hiermee de draad weer op van haar tweede beroep: musicus. Het begon met een project van een aantal maanden, maar de meeste mensen wilden hierna verder zingen, zodat sindsdien elke vrijdagavond koor is op &lsquo;t Leeuweriksveld en af en toe een uitvoering.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-deleeuwerikken.jpg`} alt="Koor De Leeuwerikken" />
+          <figcaption>Koor &ldquo;De Leeuwerikken&rdquo;</figcaption>
+        </figure>
+        <p>En tenslotte het <strong>schoolinitiatief</strong>: een groep ouders en een leerkracht willen een staatsvrije boerderij-basisschool oprichten. Het idee is om het Vrije schoolleerplan op zinvolle wijze te verbinden met het boerenleven.</p>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>Één jaar boerderijschool</h2>
+        <p>Na negen maanden broeden en voorbereiden opende in januari 2016 &lsquo;t Leeuweriksnest haar deuren. Drie kinderen, een juf en haar hond gingen enthousiast aan de slag met de dieren, de tuin en de andere leerstof. De kinderen hadden het erg naar de zin en zo gingen de volwassenen hard aan het werk, om meer ouders en kinderen voor de school te werven. Na de zomervakantie startten twee nieuwe juffen en waren er geïnteresseerde ouders voor de kleuterklas. Maar het vertrouwen in echte vrijheid van onderwijs bleek nog te zwak. De stap naar deze vorm van onderwijs &egrave;n de daarbij horende grote last: het volledig zelf dragen van de kosten was te groot. Aan het einde van het jaar sloot de school haar deuren met een mooie uitvoering van het kerstspel uit Oberufer.</p>
+        <div class="foto-grid-klein">
+          <figure>
+            <img src={`${b}/afb/geschiedenis-school5.jpg`} alt="Meiboom bij de boerderijschool" />
+            <figcaption>Meiboom</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-school1.jpg`} alt="Leerlingen in de wei" />
+            <figcaption>Leerlingen in de wei</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-school2.jpg`} alt="Leerlingen in de schooltuin" />
+            <figcaption>In de schooltuin</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-school3.jpg`} alt="Leerlingen in de klas" />
+            <figcaption>In de klas</figcaption>
+          </figure>
+          <figure>
+            <img src={`${b}/afb/geschiedenis-school4.jpg`} alt="De hond in de klas" />
+            <figcaption>De hond in de klas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="inhoud-blok">
+        <h2>&lsquo;t Leeuweriksveld nu</h2>
+        <p>In februari 2019 waren we 10 jaar in Wilhelmsoord. Hoeveel kroppen sla, bossen raapsteel en kilo&rsquo;s rode biet zijn er wel geoogst en weer opgegeten! Hoeveel keren is de grond bewerkt, de bedden gewied, de dieren gevoerd! En elk seizoen is toch weer op zijn eigen manier nieuw en bijzonder. Het is een fase van vestiging. We moeten niet meer voor elke klus het wiel opnieuw uitvinden. Als het droog is, kan overal beregend worden. Als we na een jaar weer asperges moeten sorteren, gaat gewoon de stekker in het stopcontact, water aangesloten en dan loopt de zaak. We hebben het grote geluk, dat we als biologisch groenteteeltbedrijf met boerderijwinkel vrij uniek zijn in de regio. Zo is onze klantenkring nog steeds groeiende en zijn we blij met de waardering. Ons winkelassortiment wordt steeds meer verrijkt door producten van biologische bedrijven waarmee we samenwerken. Het is heerlijk om in een goed netwerk te zitten.</p>
+        <p>We kunnen werken aan kleine projecten voor biodiversiteit en milieu. In 2018 hebben we op het laagste stuk land aan de Zandzoom een vijver aangelegd. Het lelijkste uithoekje is een plek geworden waar we nu graag komen.</p>
+        <figure class="foto-met-tekst">
+          <img src={`${b}/afb/geschiedenis-vijver.jpg`} alt="De vijver aan de Zandzoom" />
+          <figcaption>De vijver aan de Zandzoom, aangelegd in 2018</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .foto-met-tekst {
+    margin: 1.5rem 0;
+  }
+
+  .foto-met-tekst img {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+  }
+
+  figcaption {
+    font-size: 0.82rem;
+    color: var(--tekst-zacht);
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+
+  .foto-grid-klein {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .foto-grid-klein figure {
+    margin: 0;
+  }
+
+  .foto-grid-klein img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--tekst-zacht);
+    font-weight: normal;
+    margin-bottom: 1rem;
+  }
+</style>

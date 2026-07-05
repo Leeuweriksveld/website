@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Openingstijden" description="Openingstijden van de boerderijwinkel van 't Leeuweriksveld in Emmen.">
@@ -10,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 
  <div class="broodkruimel">
  <div class="container">
- <a href="/">Home</a> › Openingstijden
+ <a href={`${b}/`}>Home</a> › Openingstijden
  </div>
  </div>
 
@@ -45,12 +46,12 @@ import Layout from '../layouts/Layout.astro';
  <p style="margin-top: 0.75rem;">
  <a href="tel:0591381445">0591-381445</a> · <a href="mailto:info@leeuweriksveld.nl">info@leeuweriksveld.nl</a>
  </p>
- <a href="/routebeschrijving" class="knop knop-groen" style="margin-top: 1rem; display: inline-block;">Routebeschrijving →</a>
+ <a href={`${b}/routebeschrijving`} class="knop knop-groen" style="margin-top: 1rem; display: inline-block;">Routebeschrijving →</a>
  </div>
 
  <div class="inhoud-blok">
  <h2>Zelfoogsten</h2>
- <p>Het zelfoogsten is mogelijk op maandag, woensdag, donderdag, vrijdag en zaterdag. Zie de <a href="/zelfoogsten">pagina over zelfoogsten</a> voor meer informatie en lidmaatschapstarieven.</p>
+ <p>Het zelfoogsten is mogelijk op maandag, woensdag, donderdag, vrijdag en zaterdag. Zie de <a href={`${b}/zelfoogsten`}>pagina over zelfoogsten</a> voor meer informatie en lidmaatschapstarieven.</p>
  </div>
 
  </div>

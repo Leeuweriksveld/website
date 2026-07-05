@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Over ons" description="Wie zijn Wouter en Kathinka Kamphuis van 't Leeuweriksveld? Lees over het biologisch-dynamische bedrijf in Emmen.">
@@ -10,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
 
  <div class="broodkruimel">
  <div class="container">
- <a href="/">Home</a> › Over ons
+ <a href={`${b}/`}>Home</a> › Over ons
  </div>
  </div>
 
@@ -53,8 +54,8 @@ import Layout from '../layouts/Layout.astro';
  </div>
 
  <div style="text-align: center; margin-top: 2rem;">
- <a href="/geschiedenis" class="knop knop-groen">Lees onze geschiedenis →</a>
- <a href="/contact" class="knop knop-primair" style="margin-left: 1rem;">Neem contact op</a>
+ <a href={`${b}/geschiedenis`} class="knop knop-groen">Lees onze geschiedenis →</a>
+ <a href={`${b}/contact`} class="knop knop-primair" style="margin-left: 1rem;">Neem contact op</a>
  </div>
  </div>
  </section>
