@@ -1,76 +1,146 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const groenten = [
+ // A
+ { letter: "A", naam: "Aardappelen", aantal: "28+", tips: "Marokkaanse salade, soep met prei, zelfgemaakte friet, rösti, gratin" },
+ { letter: "A", naam: "Aardpeer", aantal: "26+", tips: "Soep, geroosterd, chips, pasta. Let op: inuline-gehalte, begin klein" },
+ { letter: "A", naam: "Amsoi", aantal: "1", tips: "Surinaamse stengelgroente, gestoofd" },
+ { letter: "A", naam: "Andijvie", aantal: "50+", tips: "Stamppot, salade, gesmoord, gratin, met kaas en noten" },
+ { letter: "A", naam: "Appel", aantal: "16", tips: "Appelmoes, taart, hete bliksem, combinaties met groenten" },
+ { letter: "A", naam: "Asperges", aantal: "28", tips: "Klassiek met hollandaise, pastagerechten, soep" },
+ { letter: "A", naam: "Aubergine", aantal: "22", tips: "Moussaka, curry, gratin met mozzarella, mediterraan" },
+ { letter: "A", naam: "Avocado", aantal: "5", tips: "Guacamole, salades" },
+ // B
+ { letter: "B", naam: "Bieten (rood en geel)", aantal: "70+", tips: "Soep, carpaccio, burgers, risotto. Gele biet zoeter, rauw in salades" },
+ { letter: "B", naam: "Bloemkool", aantal: "30+", tips: "Klassieke bloemkoolsaus, curry, pasta, risotto, geroosterd" },
+ { letter: "B", naam: "Boerenkool", aantal: "50+", tips: "Stamppot, chips, salade. Tip: eerst invriezen voor fijner snijden" },
+ { letter: "B", naam: "Bosknoflook", aantal: "5", tips: "Fijn gehakt als garnering, in soepen en salades" },
+ { letter: "B", naam: "Bosui", aantal: "12", tips: "Soepen, couscous, pasta, wraps" },
+ { letter: "B", naam: "Broccoli", aantal: "40+", tips: "Curry, pasta, risotto, roerbak" },
+ // C
+ { letter: "C", naam: "Champignons", aantal: "15", tips: "Risotto, pasta, gratin, combinaties" },
+ { letter: "C", naam: "Chinese kool", aantal: "25+", tips: "Snel gaar, binnenste bladeren rauw in salade" },
+ { letter: "C", naam: "Courgette", aantal: "60+", tips: "Soep, lasagna, gratin, geroosterd, courgetti" },
+ // D
+ { letter: "D", naam: "Doperwten", aantal: "8", tips: "Erwtensoep, ragout, gepureerd" },
+ // F
+ { letter: "F", naam: "Frutselspruitjes", aantal: "6", tips: "Kruising boerenkool en spruitjes; 2 minuten koken; pasta carbonara" },
+ // G
+ { letter: "G", naam: "Groene kool / Savooiekool", aantal: "50+", tips: "Stamppot, roerbak, gevulde rollen, combinaties met fruit" },
+ { letter: "G", naam: "Groenlof", aantal: "25+", tips: "Winterse salade met zoete dressing; stevige bladeren fijn snijden" },
+ // K
+ { letter: "K", naam: "Kapucijners", aantal: "8", tips: "Vers met kaas- en mosterdsaus" },
+ { letter: "K", naam: "Kiemen / Taugé / Alfalfa", aantal: "25+", tips: "Rauw in salades met tomaat, ei, gerookte zalm" },
+ { letter: "K", naam: "Knolselderij", aantal: "40+", tips: "Stamppot, soep, gratin. Groen loof invriezen voor soep" },
+ { letter: "K", naam: "Knolvenkel", aantal: "50+", tips: "Salade, gratin, geroosterd, pasta" },
+ { letter: "K", naam: "Komkommer", aantal: "30+", tips: "Salade, ingelegde augurken, soep, roerbak" },
+ { letter: "K", naam: "Koolraap / Raapjes", aantal: "25+", tips: "Goudgele boterknolletjes zoet-bitter; rauw of gestoofd met curry" },
+ { letter: "K", naam: "Koolrabi", aantal: "50+", tips: "Dik schillen aan wortelkant; dun aan groeipunt; zoet rauw in dunne plakken" },
+ { letter: "K", naam: "Krielaardappels", aantal: "13", tips: "Geroosterd, salade, gratin" },
+ // L
+ { letter: "L", naam: "Lichtwortel (schorseneer)", aantal: "10+", tips: "Gestoofd, gebakken, soep; schillen in koud water om verkleuring te voorkomen" },
+ // M
+ { letter: "M", naam: "Mais / Suikermais", aantal: "10+", tips: "Gekookt, gegrild, salade" },
+ // O
+ { letter: "O", naam: "Oostindische kers", aantal: "3", tips: "Smaak als waterkers; fijn gesneden op kaassandwich of in dressing" },
+ // P
+ { letter: "P", naam: "Paars mosterdblad", aantal: "5", tips: "Koken als spinazie of roerbakken" },
+ { letter: "P", naam: "Paksoi", aantal: "50+", tips: "Snel gaar; binnenste bladeren en stelen rauw met romige dip" },
+ { letter: "P", naam: "Palmkool (Cavolo Nero)", aantal: "15", tips: "Toscaans, zeer donkere bladeren; traditioneel in minestrone en ribollita" },
+ { letter: "P", naam: "Paprika", aantal: "35+", tips: "Gevulde paprika, geroosterd, soep, pasta" },
+ { letter: "P", naam: "Pastinaak", aantal: "40+", tips: "Soep, geroosterd, gratin, gecombineerd met andere wortelgroenten" },
+ { letter: "P", naam: "Peterselie", aantal: "6", tips: "Persillade-dressing, garnering" },
+ { letter: "P", naam: "Peultjes", aantal: "15", tips: "Roerbak, pasta" },
+ { letter: "P", naam: "Pompoen / Sweet Dumpling", aantal: "30+", tips: "Soep, gevuld, gratin, desserts. Tip: 5 minuten voorkoken voor makkelijker snijden" },
+ { letter: "P", naam: "Prei", aantal: "30+", tips: "Soep, quiche, gestoofd" },
+ { letter: "P", naam: "Pronkbonen", aantal: "10", tips: "Gestoofd, salade" },
+ // R
+ { letter: "R", naam: "Raapstelen", aantal: "8", tips: "Als spinazie, jonge blaadjes rauw in salade" },
+ { letter: "R", naam: "Rabarber", aantal: "12", tips: "Compote, taart, jam, combinatie met aardbeien" },
+ { letter: "R", naam: "Radijs", aantal: "10", tips: "Rauw met boter en zout, salade, ingelegde radijs" },
+ { letter: "R", naam: "Rammenas / Daikon", aantal: "15", tips: "Rauw geraspt, ingelegde rammenas, soep" },
+ { letter: "R", naam: "Rode kool", aantal: "20+", tips: "Zuurkool, salade, gestoofd met appel en kaneel" },
+ { letter: "R", naam: "Rucola", aantal: "8", tips: "Salade, pizza, pasta" },
+ // S
+ { letter: "S", naam: "Selderij (bleek)", aantal: "12", tips: "Soep, ragout, rauw in salade" },
+ { letter: "S", naam: "Sjalotten", aantal: "10", tips: "Basis voor sauzen, geroosterd, in azijn ingelegde sjalotten" },
+ { letter: "S", naam: "Sla (alle soorten)", aantal: "30+", tips: "Groen, rood, eikenblad, veldsla, batavia, bindsla" },
+ { letter: "S", naam: "Snijbiet", aantal: "20+", tips: "Gestoofd, salade, pasta" },
+ { letter: "S", naam: "Spinazie", aantal: "30+", tips: "Soep, salade, ovenschotel" },
+ { letter: "S", naam: "Spitskool", aantal: "20+", tips: "Salade, roerbak, soep" },
+ { letter: "S", naam: "Spruitjes", aantal: "20+", tips: "Gekookt, geroosterd, wok" },
+ { letter: "S", naam: "Stoofperen", aantal: "8", tips: "Gestoofd op rode wijn, stamppot" },
+ // T
+ { letter: "T", naam: "Tomaten", aantal: "35+", tips: "Salade, saus, soep, gedroogd" },
+ { letter: "T", naam: "Tuinbonen", aantal: "15", tips: "Vers gedopt, gepureerd, in salade" },
+ // U
+ { letter: "U", naam: "Uien", aantal: "20+", tips: "Basis voor vrijwel alles; gekarameliseerd, soep, ringen" },
+ // V
+ { letter: "V", naam: "Veldsla", aantal: "10", tips: "Winterse salade, mild van smaak" },
+ // W
+ { letter: "W", naam: "Witlof", aantal: "25+", tips: "Gegratineerd met ham en kaas, salade, gestoofd" },
+ { letter: "W", naam: "Wortelen", aantal: "30+", tips: "Soep, rauw, geroosterd, worteltaart" },
+ // Y
+ { letter: "Y", naam: "Yacón", aantal: "5", tips: "Zoete knol, rauw in dunne plakken of licht gestoomd" },
+ // Z
+ { letter: "Z", naam: "Zuurkool", aantal: "10", tips: "Stamppot, gegratineerd, zuurkoolsalade" },
+];
+
+const letters = [...new Set(groenten.map(g => g.letter))];
 ---
 
-<Layout title="Recepten" description="Recepten voor groenten van 't Leeuweriksveld — van A tot Z, met tips voor bereiding en bewaring.">
-  <div class="pagina-hero">
-    <h1>Recepten</h1>
-    <p>Seizoensrecepten en bereidingstips — van aardappel tot zucchini</p>
-  </div>
+<Layout title="Recepten" description="Recepten van A tot Z voor groenten van 't Leeuweriksveld, met bereidingstips en bewaartips.">
+ <div class="pagina-hero">
+ <h1>Recepten</h1>
+ <p>Meer dan 300 recepten voor seizoensgroenten &mdash; van aardappel tot zuurkool</p>
+ </div>
 
-  <div class="broodkruimel">
-    <div class="container">
-      <a href="/">Home</a> › Recepten
-    </div>
-  </div>
+ <div class="broodkruimel">
+ <div class="container">
+ <a href="/">Home</a> &rsaquo; Recepten
+ </div>
+ </div>
 
-  <section class="sectie">
-    <div class="container">
+ <section class="sectie">
+ <div class="container">
 
-      <div class="info-banner">
-        <p>🍽️ Onze recepten zijn gebaseerd op de pakketbrieven die we wekelijks meesturen met het groenteabonnement. Veel recepten zijn ook online te vinden via de <a href="/nieuws">pakketbrieven</a>.</p>
-      </div>
+ <div class="info-banner">
+ <p><strong>Wekelijkse pakketbrief:</strong> Bij elk groenteabonnement ontvangt u een pakketbrief met recepten en bereidingstips, specifiek voor de groenten van die week. Al deze recepten zijn ook terug te vinden in onderstaand overzicht.</p>
+ </div>
 
-      <p style="margin-bottom: 2rem; color: var(--tekst-zacht);">Hieronder vind je een overzicht van groenten die wij telen, met bereidingstips en receptideeën. Klik op een groente voor meer informatie.</p>
+ <!-- Letternavigatie -->
+ <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+ {letters.map(letter => (
+ <a href={`#letter-${letter}`} class="knop knop-omlijnd" style="padding: 0.35rem 0.75rem; font-size: 0.9rem;">{letter}</a>
+ ))}
+ </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem;">
-        {[
-          { naam: "Aardappelen", icoon: "🥔", tips: "Koken, bakken, stampen, roosteren" },
-          { naam: "Aardpeer", icoon: "🫚", tips: "Soep, geroosterd, rauw geraspt" },
-          { naam: "Andijvie", icoon: "🥬", tips: "Stamppot, salade, gesmoord" },
-          { naam: "Asperges", icoon: "🫛", tips: "Gekookt, geroosterd, met ham" },
-          { naam: "Augurk", icoon: "🥒", tips: "Rauw, ingelegde augurken" },
-          { naam: "Bieten", icoon: "🟣", tips: "Salade, soep, geroosterd" },
-          { naam: "Bleekselderij", icoon: "🌿", tips: "Soep, ragout, rauw" },
-          { naam: "Boerenkool", icoon: "🥦", tips: "Stamppot, chips, salade" },
-          { naam: "Bonen (sperzie)", icoon: "🫘", tips: "Gekookt, roerbak, salade" },
-          { naam: "Broccoli", icoon: "🥦", tips: "Gestoomd, ovenschotel, soep" },
-          { naam: "Chinese kool", icoon: "🥬", tips: "Roerbak, salade, soep" },
-          { naam: "Courgette", icoon: "🫑", tips: "Geroosterd, gevuld, rauw" },
-          { naam: "Erwten", icoon: "🫘", tips: "Erwtensoep, ragout, gepureerd" },
-          { naam: "Knolselderij", icoon: "⚪", tips: "Stamppot, soep, geroosterd" },
-          { naam: "Koolrabi", icoon: "🟢", tips: "Rauw geraspt, gestoofd, soep" },
-          { naam: "Lichtwortel", icoon: "🌱", tips: "Gestoofd, gebakken, soep" },
-          { naam: "Mais", icoon: "🌽", tips: "Gekookt, gegrild, salade" },
-          { naam: "Pastinaak", icoon: "🫚", tips: "Soep, puree, geroosterd" },
-          { naam: "Peterselie", icoon: "🌿", tips: "Garnering, salsa verde, soep" },
-          { naam: "Pompoen", icoon: "🎃", tips: "Soep, geroosterd, curry" },
-          { naam: "Prei", icoon: "🥬", tips: "Soep, quiche, gestoofd" },
-          { naam: "Rode kool", icoon: "🟣", tips: "Zuurkool, salade, gestoofd" },
-          { naam: "Savooie kool", icoon: "🥬", tips: "Gestoofd, gevuld, soep" },
-          { naam: "Snijbiet", icoon: "🌈", tips: "Gestoofd, salade, pasta" },
-          { naam: "Spinazie", icoon: "🥬", tips: "Soep, salade, ovenschotel" },
-          { naam: "Spitskool", icoon: "🥬", tips: "Salade, roerbak, soep" },
-          { naam: "Spruitjes", icoon: "🟢", tips: "Gekookt, geroosterd, wok" },
-          { naam: "Tomaten", icoon: "🍅", tips: "Salade, saus, soep, gedroogd" },
-          { naam: "Ui", icoon: "🧅", tips: "Basis voor vrijwel alles" },
-          { naam: "Venkel", icoon: "🌿", tips: "Salade, geroosterd, soep" },
-          { naam: "Witlof", icoon: "⚪", tips: "Gegratineerd, salade, gestoofd" },
-          { naam: "Wortelen", icoon: "🥕", tips: "Soep, rauw, geroosterd" },
-        ].map(item => (
-          <div class="kaart" style="padding: 1rem; text-align: center;">
-            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">{item.icoon}</div>
-            <h3 style="font-size: 0.95rem; margin-bottom: 0.3rem;">{item.naam}</h3>
-            <p style="font-size: 0.78rem; color: var(--tekst-zacht); margin: 0;">{item.tips}</p>
-          </div>
-        ))}
-      </div>
+ <!-- Groenten per letter -->
+ {letters.map(letter => (
+ <div id={`letter-${letter}`}>
+ <h2 class="recept-letter-kop">{letter}</h2>
+ <div class="recept-index">
+ {groenten.filter(g => g.letter === letter).map(g => (
+ <div class="recept-groente">
+ <h3>{g.naam}</h3>
+ <p class="recept-info">{g.tips}</p>
+ <span class="recept-aantal">{g.aantal} recepten</span>
+ </div>
+ ))}
+ </div>
+ </div>
+ ))}
 
-      <div class="inhoud-blok" style="margin-top: 2.5rem;">
-        <h2>Pakketbrieven met recepten</h2>
-        <p>Bij elk groenteabonnement ontvang je een pakketbrief met informatie over de groenten van die week, tips voor bewaring en concrete recepten. Abonnees ontvangen deze wekelijks. Archief pakketbrieven: neem contact op voor oudere edities.</p>
-      </div>
+ <div class="inhoud-blok" style="margin-top: 3rem;">
+ <h2>Recepten per pakketbrief</h2>
+ <p>Alle recepten op deze pagina zijn afkomstig uit onze wekelijkse pakketbrieven, die we meegeven bij het groenteabonnement. Het archief loopt van 2009 tot heden. Heeft u een specifiek recept nodig dat u niet kunt vinden? Neem gerust contact met ons op.</p>
+ <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem;">
+ <a href="tel:0591381445" class="knop knop-groen">0591-381445</a>
+ <a href="mailto:info@leeuweriksveld.nl" class="knop knop-primair">info@leeuweriksveld.nl</a>
+ </div>
+ </div>
 
-    </div>
-  </section>
+ </div>
+ </section>
 </Layout>

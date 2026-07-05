@@ -30,13 +30,13 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} — 't Leeuweriksveld</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/afb/logo.png" />
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
         <a href="/" class="site-logo">
-          <div class="logo-teken">🌱</div>
+          <img src="/afb/logo.png" alt="'t Leeuweriksveld logo" class="logo-afbeelding" />
           <div class="logo-tekst">
             <span class="logo-naam">'t Leeuweriksveld</span>
             <span class="logo-ondertitel">Biologisch-dynamisch</span>
@@ -73,11 +73,11 @@ const nav = [
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-sectie">
-          <h4>'t Leeuweriksveld</h4>
+          <img src="/afb/logo.png" alt="'t Leeuweriksveld" class="footer-logo" />
           <p>Biologisch-dynamische groentekwekerij in Emmen, Drenthe. Groenteabonnementen, boerderijwinkel en zelfoogsten.</p>
           <div class="keurmerk-rij">
-            <span class="keurmerk">🌿 Demeter</span>
-            <span class="keurmerk">🇪🇺 EU Biologisch</span>
+            <span class="keurmerk">Demeter gecertificeerd</span>
+            <span class="keurmerk">EU Biologisch</span>
           </div>
         </div>
 
@@ -114,7 +114,7 @@ const nav = [
       </div>
 
       <div class="footer-bodem">
-        <p>© {new Date().getFullYear()} 't Leeuweriksveld · Zandzoom 72, Emmen · Biologisch-dynamisch gecertificeerd</p>
+        <p>&copy; {new Date().getFullYear()} 't Leeuweriksveld · Zandzoom 72, Emmen · Biologisch-dynamisch gecertificeerd</p>
       </div>
     </footer>
 
