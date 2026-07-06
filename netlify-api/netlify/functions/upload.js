@@ -1,69 +1,69 @@
 const pdfParse = require('pdf-parse');
-const multipart = require('parse-multipart-data');
+const Busboy = require('busboy');
+
+function parseMultipart(event) {
+  return new Promise((resolve, reject) => {
+    const velden = {};
+    const bestanden = {};
+
+    const busboy = Busboy({
+      headers: { 'content-type': event.headers['content-type'] },
+    });
+
+    busboy.on('field', (naam, waarde) => { velden[naam] = waarde; });
+
+    busboy.on('file', (naam, stroom, info) => {
+      const stukken = [];
+      stroom.on('data', (chunk) => stukken.push(chunk));
+      stroom.on('end', () => {
+        bestanden[naam] = { data: Buffer.concat(stukken), filename: info.filename };
+      });
+    });
+
+    busboy.on('finish', () => resolve({ velden, bestanden }));
+    busboy.on('error', reject);
+
+    const body = Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8');
+    busboy.write(body);
+    busboy.end();
+  });
+}
 
 function extraheerData(tekst) {
   const regels = tekst.split(/\r?\n/).map(r => r.trim()).filter(r => r.length > 0);
-
   const groenten = [];
   const recepten = [];
   const nieuws = [];
 
-  // Zoek secties op basis van koppen
   let sectie = null;
-
-  // Patronen voor recepttitels: genummerd (1. 2. 1) 2)) of met streepje
-  const receptPatroon = /^(\d+[\.\)]\s+|[-•*]\s+)(.+)$/;
-
-  // Groenten: vaak in een blok na "pakket" of "inhoud" of "groenten"
-  const groentenKop = /pakket|inhoud|groenten in|wat zit er|deze week|volgende week/i;
+  const groentenKop = /pakket|inhoud|groenten in|wat zit er|deze week/i;
   const receptenKop = /recept|bereid|tip|in de keuken/i;
   const nieuwsKop = /nieuws|agenda|evenement|aankondig|activiteit|bijeenkomst|concert|open dag|oproep/i;
-  const stopWoorden = /volgende week|^pagina|^leeuweriksveld|^www\.|^info@|^tel|^\d{4}\s?[a-z]{2}/i;
+  const stopWoorden = /volgende week|^pagina|^leeuweriksveld|^www\.|^info@|^tel:/i;
 
-  for (let i = 0; i < regels.length; i++) {
-    const regel = regels[i];
-
-    // Sectie detecteren
+  for (const regel of regels) {
     if (groentenKop.test(regel) && regel.length < 60) { sectie = 'groenten'; continue; }
     if (receptenKop.test(regel) && regel.length < 60) { sectie = 'recepten'; continue; }
     if (nieuwsKop.test(regel) && regel.length < 60) { sectie = 'nieuws'; continue; }
-
     if (stopWoorden.test(regel)) continue;
 
     if (sectie === 'groenten') {
-      // Groenten staan vaak als simpele regels of met streepje
       const match = regel.match(/^[-•*]?\s*(.+)$/);
       if (match && match[1].length > 2 && match[1].length < 60) {
         const groente = match[1].replace(/\(.*?\)/g, '').trim();
         if (groente && !groenten.includes(groente)) groenten.push(groente);
       }
     }
-
     if (sectie === 'recepten') {
-      const match = regel.match(receptPatroon);
-      if (match && match[2].length > 4) {
-        recepten.push(match[2].trim());
-      } else if (regel.length > 10 && regel.length < 100 && /[a-z]/.test(regel)) {
-        // Recepttitel zonder nummering maar in receptsectie
-        if (!/^\d+$/.test(regel)) recepten.push(regel);
-      }
+      const match = regel.match(/^(\d+[\.\)]\s+|[-•*]\s+)(.+)$/);
+      if (match && match[2].length > 4) recepten.push(match[2].trim());
     }
-
     if (sectie === 'nieuws' && regel.length > 15 && regel.length < 200) {
       nieuws.push(regel);
     }
   }
 
-  // Fallback: als groenten leeg zijn, zoek lijstitems bovenaan
-  if (groenten.length === 0) {
-    for (const regel of regels.slice(0, 30)) {
-      if (/^[-•]\s+\w/.test(regel)) {
-        groenten.push(regel.replace(/^[-•]\s+/, '').replace(/\(.*?\)/g, '').trim());
-      }
-    }
-  }
-
-  // Fallback: recepten op basis van nummering in hele tekst
+  // Fallback: genummerde regels in hele tekst
   if (recepten.length === 0) {
     for (const regel of regels) {
       const match = regel.match(/^\d+[\.\)]\s+(.{5,80})$/);
@@ -90,59 +90,51 @@ exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ bericht: 'Alleen POST toegestaan' }) };
 
   try {
-    const boundary = multipart.getBoundary(event.headers['content-type']);
-    const body = Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8');
-    const parts = multipart.parse(body, boundary);
+    const { velden, bestanden } = await parseMultipart(event);
 
-    const get = (naam) => parts.find(p => p.name === naam);
-    const wachtwoord = get('wachtwoord')?.data?.toString();
-    const week = parseInt(get('week')?.data?.toString());
-    const jaar = parseInt(get('jaar')?.data?.toString());
-    const bestandPart = get('bestand');
+    const wachtwoord = velden['wachtwoord'];
+    const week = parseInt(velden['week']);
+    const jaar = parseInt(velden['jaar']);
+    const bestandPart = bestanden['bestand'];
 
     if (wachtwoord !== process.env.UPLOAD_WACHTWOORD) {
       return { statusCode: 401, headers, body: JSON.stringify({ bericht: 'Ongeldig wachtwoord' }) };
     }
-
     if (!bestandPart || !week || !jaar) {
       return { statusCode: 400, headers, body: JSON.stringify({ bericht: 'Bestand, week en jaar zijn verplicht' }) };
     }
 
-    // Tekst extraheren
     let tekst = '';
     const bestandsnaam = bestandPart.filename || '';
     if (bestandsnaam.endsWith('.pdf')) {
       const result = await pdfParse(bestandPart.data);
       tekst = result.text;
     } else {
-      tekst = bestandPart.data.toString('utf8').replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, '\n');
+      tekst = bestandPart.data.toString('utf8')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&[a-z]+;/g, ' ')
+        .replace(/\s+/g, '\n');
     }
 
     const extracted = extraheerData(tekst);
-
     const weekStr = String(week).padStart(2, '0');
     const ext = bestandsnaam.endsWith('.html') ? '.html' : '.pdf';
-    const nieuwBestand = `pakketbrief-week-${weekStr}-${jaar}${ext}`;
 
     const nieuwRecord = {
       week, jaar,
-      bestand: nieuwBestand,
+      bestand: `pakketbrief-week-${weekStr}-${jaar}${ext}`,
       groenten: extracted.groenten,
       recepten: extracted.recepten,
       nieuws: extracted.nieuws,
     };
 
-    // Haal huidige pakketbrieven.json op via GitHub API
     const githubToken = process.env.GITHUB_TOKEN;
-    const repo = 'Leeuweriksveld/website';
-    const pad = 'src/data/pakketbrieven.json';
-    const apiBase = `https://api.github.com/repos/${repo}/contents/${pad}`;
+    const apiBase = `https://api.github.com/repos/Leeuweriksveld/website/contents/src/data/pakketbrieven.json`;
 
     const huidigResp = await fetch(apiBase, {
       headers: { Authorization: `Bearer ${githubToken}`, Accept: 'application/vnd.github+json' }
     });
     const huidigData = await huidigResp.json();
-    const huidigeSha = huidigData.sha;
     const huidigeInhoud = JSON.parse(Buffer.from(huidigData.content, 'base64').toString());
 
     const index = huidigeInhoud.findIndex(r => r.week === week && r.jaar === jaar);
@@ -164,7 +156,7 @@ exports.handler = async function(event) {
       body: JSON.stringify({
         message: `📬 Pakketbrief week ${week}, ${jaar} toegevoegd`,
         content: nieuweInhoud,
-        sha: huidigeSha,
+        sha: huidigData.sha,
       })
     });
 
@@ -176,11 +168,7 @@ exports.handler = async function(event) {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({
-        week, jaar,
-        aantalGroenten: nieuwRecord.groenten.length,
-        aantalRecepten: nieuwRecord.recepten.length,
-      })
+      body: JSON.stringify({ week, jaar, aantalGroenten: nieuwRecord.groenten.length, aantalRecepten: nieuwRecord.recepten.length }),
     };
 
   } catch (err) {
